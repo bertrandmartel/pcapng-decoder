@@ -17,7 +17,7 @@ Further section type will be added in the future.
 
 COMMAND LINE SYNTAX : 
 
-<b>java -jar pcapngdecoder-1.0.jar -f test.pcapng -v</b>
+``java -jar pcapngdecoder-1.0.jar -f test.pcapng -v``
 
 -f <file.pcapng> : input file
 
