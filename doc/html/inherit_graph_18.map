@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interfacefr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1inter_1_1_i_description_block.html" title="fr.bmartel.pcapdecoder.structure.types.inter.\lIDescriptionBlock" alt="" coords="7,5,284,51"/>
+<area shape="rect" id="node3" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_interface_description_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lInterfaceDescriptionHeader" alt="" coords="335,14,612,61"/>
+<area shape="rect" id="node4" href="$interfacefr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1inter_1_1_i_enhanced_packet_b_lock.html" title="fr.bmartel.pcapdecoder.structure.types.inter.\lIEnhancedPacketBLock" alt="" coords="7,74,284,121"/>
+<area shape="rect" id="node6" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_enhanced_packet_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lEnhancedPacketHeader" alt="" coords="335,118,612,165"/>
+<area shape="rect" id="node7" href="$interfacefr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1_i_pcapng_type.html" title="fr.bmartel.pcapdecoder.structure.types.\lIPcapngType" alt="" coords="20,143,271,190"/>
+<area shape="rect" id="node11" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_interface_statistics_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lInterfaceStatisticsHeader" alt="" coords="335,205,612,251"/>
+<area shape="rect" id="node13" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_section_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lSectionHeader" alt="" coords="335,274,612,321"/>
+<area shape="rect" id="node14" href="$interfacefr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1inter_1_1_i_section_header_block.html" title="fr.bmartel.pcapdecoder.structure.types.inter.\lISectionHeaderBlock" alt="" coords="7,282,284,329"/>
+<area shape="rect" id="node16" href="$interfacefr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1inter_1_1_i_statistics_block.html" title="fr.bmartel.pcapdecoder.structure.types.inter.\lIStatisticsBlock" alt="" coords="7,213,284,259"/>
+</map>
