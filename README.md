@@ -1,15 +1,15 @@
-# PCAPNG FILE PARSER IN JAVA #
+# PCAPNG File Parser in Java #
 
 => http://akinaru.github.io/pcapng-java/
 
 Update 04/05/2015
 
 => will parse pcap ng file with following sections  :
-_ Section Header
-_ Interface Description
-_ Interface Statistics
-_ Enhanced Packet
-_ Name Resolution
+* Section Header
+* Interface Description
+* Interface Statistics
+* Enhanced Packet
+* Name Resolution
 
 Further section type will be added in the future.
 
@@ -23,20 +23,20 @@ COMMAND LINE SYNTAX :
 -----------------------------------------------------------------------
 PROGRAM SYNTAX :
 
-```byte[] dataFromFile = readFile("test.pcapng");```
+``byte[] dataFromFile = readFile("test.pcapng");``
 
-```PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);```
-```pcapNgDecoder.decode();```
+``PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);``
+``pcapNgDecoder.decode();``
 
 dont forget the import :
-```import fr.bmartel.pcapdecoder.PcapDecoder```;
+``import fr.bmartel.pcapdecoder.PcapDecoder;``
 
 You will access all parsed data from pcapNgDecoder object.
-A complete example is present in ```fr.bmartel.pcapdecoder.main.DisplayAllPacket``` class
+A complete example is present in ``fr.bmartel.pcapdecoder.main.DisplayAllPacket`` class
 
 getSectionList() : retrieve all sections Object
 
-Access to section type is possible with reflection using instanceof with a set of interface defined in package fr.bmartel.pcapdecoder.structure.types.inter :
+Access to section type is possible with reflection using instanceof with a set of interface defined in package ``fr.bmartel.pcapdecoder.structure.types.inter`` :
 
 For now only 4 are parsed successfully :
 
@@ -46,7 +46,7 @@ For now only 4 are parsed successfully :
 * IDescritpionBlock
 * INameResolutionBlock
 
-A getSectionList().get(index) instanceof ISectionHeaderBlock will permit you to cast the latter interface to get access to the section's characteristics.
+A ``getSectionList().get(index) instanceof ISectionHeaderBlock`` will permit you to cast the latter interface to get access to the section's characteristics.
 
 packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
 
