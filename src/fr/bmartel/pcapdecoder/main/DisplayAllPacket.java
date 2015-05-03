@@ -161,7 +161,6 @@ public class DisplayAllPacket {
 				
 				if (optionsList!=null)
 				{
-					System.out.println(optionsList==null);
 					if (optionsList.getPacketBound()!=PacketBoundState.UNKNOWN)
 						System.out.println("packet bound state     : " + optionsList.getPacketBound());
 					if (optionsList.getPacketReceptionType()!=PacketReceptionType.UNKNOWN)
