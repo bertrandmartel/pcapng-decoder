@@ -1,6 +1,6 @@
 # PCAPNG File Parser in Java #
 
-http://akinaru.github.io/pcapng-java/
+http://akinaru.github.io/pcapng-decoder-java/
 
 <i>Update 04/05/2015</i>
 
