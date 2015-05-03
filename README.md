@@ -41,20 +41,20 @@ getSectionList() : retrieve all sections Object
 Access to section type is possible with reflection using instanceof with a set of interface defined in package fr.bmartel.pcapdecoder.structure.types.inter :
 
 For now only 4 are parsed successfully :
-<ul>
-<li>ISectionHeaderBlock</li>
-<li>IEnhancedPacketBlock</li>
-<li>IStatisticsBLock</li>
-<li>IDescritpionBlock</li>
-<li>INameResolutionBlock</li>
-</ul>
+
+* ISectionHeaderBlock
+* IEnhancedPacketBlock
+* IStatisticsBLock
+* IDescritpionBlock
+* INameResolutionBlock
+
 A getSectionList().get(index) instanceof ISectionHeaderBlock will permit you to cast the latter interface to get access to the section's characteristics.
 
 packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
 
 -------------------------------------------------------------------------
 
-Project is JRE 1.7 compliant
-You can build it with ant => build.xml
-Development on Eclipse 
-Specification from https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html
+* Project is JRE 1.7 compliant
+* You can build it with ant => build.xml
+* Development on Eclipse 
+* Specification from https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html
