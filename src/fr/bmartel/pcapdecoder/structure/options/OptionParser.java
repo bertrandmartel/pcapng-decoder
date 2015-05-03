@@ -1,26 +1,3 @@
-/**
- * The MIT License (MIT)
- * 
- * Copyright (c) 2015 Bertrand Martel
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package fr.bmartel.pcapdecoder.structure.options;
 
 import java.util.Arrays;
@@ -31,6 +8,8 @@ import fr.bmartel.pcapdecoder.structure.options.object.OptionEnhancedPacketHeade
 import fr.bmartel.pcapdecoder.structure.options.object.OptionInterfaceDescriptionObject;
 import fr.bmartel.pcapdecoder.structure.options.object.OptionInterfaceStatisticsObject;
 import fr.bmartel.pcapdecoder.structure.options.object.OptionSectionHeaderObject;
+import fr.bmartel.pcapdecoder.structure.options.object.OptionsNameResolutionObject;
+import fr.bmartel.pcapdecoder.structure.options.object.OptionsRecordNameResolutionObject;
 import fr.bmartel.pcapdecoder.utils.UtilFunctions;
 
 /**
@@ -75,6 +54,8 @@ public class OptionParser {
 	
 	private IOptions option = null;
 	
+	private boolean isRecord = false;
+	
 	/**
 	 * Build parser with data
 	 * 
@@ -82,17 +63,18 @@ public class OptionParser {
 	 * @param isBigEndian
 	 * @BlockTypes type
 	 */
-	public OptionParser(byte[] data,boolean isBigEndian,BlockTypes type)
+	public OptionParser(byte[] data,boolean isBigEndian,BlockTypes type,boolean isRecord)
 	{
 		this.data=data;
 		this.isBigEndian=isBigEndian;
 		this.type=type;
+		this.isRecord=isRecord;
 	}
 	
 	/**
 	 * decode data option
 	 */
-	public void decode()
+	public int decode()
 	{
 		int initIndex = 0;
 		
@@ -112,11 +94,20 @@ public class OptionParser {
 		{
 			option=new OptionInterfaceStatisticsObject();
 		}
+		else if (type==BlockTypes.NAME_RESOLUTION_BLOCK)
+		{
+			if (isRecord)
+				option=new OptionsRecordNameResolutionObject();
+			else 
+				option=new OptionsNameResolutionObject();
+		}
 		
-		while (initIndex!=data.length)
+		int optionLength = -1;
+		
+		while (optionLength!=0)
 		{
 			int optionCode=0;
-			int optionLength=0;
+			optionLength=0;
 			byte[] optionValue=null;
 			
 			if (isBigEndian)
@@ -124,7 +115,8 @@ public class OptionParser {
 				optionCode= UtilFunctions.convertByteArrayToInt(Arrays.copyOfRange(data, initIndex+0,initIndex+2));
 				if (optionCode==0)
 				{
-					return;
+					initIndex+=2;
+					return initIndex;
 				}
 				
 				optionLength= UtilFunctions.convertByteArrayToInt(Arrays.copyOfRange(data, initIndex+2,initIndex+4));
@@ -138,7 +130,8 @@ public class OptionParser {
 				optionCode= UtilFunctions.convertByteArrayToInt(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, initIndex+0,initIndex+2)));
 				if (optionCode==0)
 				{
-					return;
+					initIndex+=2;
+					return initIndex;
 				}
 				optionLength= UtilFunctions.convertByteArrayToInt(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, initIndex+2,initIndex+4)));
 				if (optionLength>0)
@@ -169,7 +162,7 @@ public class OptionParser {
 				initIndex+=2;
 			}
 		}
-		
+		return initIndex;
 	}
 
 	public byte[] getData() {

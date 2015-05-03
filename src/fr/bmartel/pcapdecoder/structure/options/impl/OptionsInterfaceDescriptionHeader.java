@@ -1,31 +1,9 @@
-/**
- * The MIT License (MIT)
- * 
- * Copyright (c) 2015 Bertrand Martel
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package fr.bmartel.pcapdecoder.structure.options.impl;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
+import fr.bmartel.pcapdecoder.network.NetworkUtils;
 import fr.bmartel.pcapdecoder.structure.options.abstr.OptionsAbstr;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptions;
 import fr.bmartel.pcapdecoder.structure.options.object.OptionInterfaceDescriptionObject;
@@ -89,8 +67,8 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr{
 						netmask = Arrays.copyOfRange(data, 4, 8);
 					}
 					
-					this.commonObject.setInterfaceIpv4NetworkAddr(formatIpv4Addr(interfaceAddr));
-					this.commonObject.setInterfaceNetmask(formatIpv4Addr(netmask));
+					this.commonObject.setInterfaceIpv4NetworkAddr(NetworkUtils.formatIpv4Addr(interfaceAddr));
+					this.commonObject.setInterfaceNetmask(NetworkUtils.formatIpv4Addr(netmask));
 
 					
 					break;
@@ -101,7 +79,7 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr{
 					else
 						interfaceIpv6Addr = Arrays.copyOfRange(data, 0, 17);
 					
-					this.commonObject.setInterfaceIpv6NetworkAddr(formatIpv6Addr(interfaceIpv6Addr));
+					this.commonObject.setInterfaceIpv6NetworkAddr(NetworkUtils.formatIpv6AddrWithPort(interfaceIpv6Addr));
 					
 					break;
 				case 6:
@@ -111,7 +89,7 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr{
 					else
 						macAddr = Arrays.copyOfRange(data, 0, 6);
 					
-					this.commonObject.setInterfaceMacAddr(formatMacAddr(macAddr));
+					this.commonObject.setInterfaceMacAddr(NetworkUtils.formatMacAddr(macAddr));
 					break;
 				case 7:
 					byte[] euiAddr = new byte[8];
@@ -120,7 +98,7 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr{
 					else
 						euiAddr = Arrays.copyOfRange(data, 0, 8);
 					
-					this.commonObject.setInterfaceEuiAddr(formatMacAddr(euiAddr));
+					this.commonObject.setInterfaceEuiAddr(NetworkUtils.formatMacAddr(euiAddr));
 					break;
 				case 8:
 					byte[] speed = new byte[8];
@@ -179,40 +157,5 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr{
 		{
 			e.printStackTrace();
 		}
-	}
-
-	public String formatMacAddr(byte[] macAddr)
-	{
-		String macAddrStr="";
-		for (int i = 0;i < macAddr.length;i++)
-		{
-			macAddrStr+=UtilFunctions.convertFromIntToHexa(macAddr[i])+":";
-		}
-		
-		return macAddrStr.substring(0, macAddrStr.length()-1);
-	}
-	
-	public String formatIpv4Addr(byte[] ip)
-	{
-		String ipStr = "";
-		
-		for (int i = 0; i < ip.length;i++)
-		{
-			ipStr+=ip[i]+".";
-		}
-		return ipStr.substring(0, ipStr.length()-1);
-	}
-	
-	public String formatIpv6Addr(byte[] ip)
-	{
-		String ipStr ="";
-		
-		for (int i = 0; i  < 16;i=i+2)
-		{
-			ipStr+=UtilFunctions.convertFromIntToHexa(ip[i]) + UtilFunctions.convertFromIntToHexa(ip[i+1]) + ":";
-		}
-		ipStr=ipStr.substring(0, ipStr.length()-1)+"/"+(ip[16] & 0xFF);
-		
-		return ipStr;
 	}
 }

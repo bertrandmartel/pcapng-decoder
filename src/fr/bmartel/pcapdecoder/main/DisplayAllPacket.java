@@ -9,36 +9,16 @@ import fr.bmartel.pcapdecoder.constant.PacketReceptionType;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionSectionHeader;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsDescriptionHeader;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsEnhancedPacketHeader;
+import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsNameResolutionHeader;
+import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsRecordNameResolution;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsStatisticsHeader;
 import fr.bmartel.pcapdecoder.structure.types.inter.IDescriptionBlock;
 import fr.bmartel.pcapdecoder.structure.types.inter.IEnhancedPacketBLock;
+import fr.bmartel.pcapdecoder.structure.types.inter.INameResolutionBlock;
 import fr.bmartel.pcapdecoder.structure.types.inter.ISectionHeaderBlock;
 import fr.bmartel.pcapdecoder.structure.types.inter.IStatisticsBlock;
 import fr.bmartel.pcapdecoder.utils.UtilFunctions;
 
-/**
- * The MIT License (MIT)
- * 
- * Copyright (c) 2015 Bertrand Martel
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 public class DisplayAllPacket {
 
 	/**
@@ -240,6 +220,50 @@ public class DisplayAllPacket {
 						System.out.println("packet delivered to user    : " + optionsList.getPacketDeliveredToUser());
 				}
 				
+				System.out.println("##########################################################");
+			}
+			else if (decoder.getSectionList().get(i) instanceof INameResolutionBlock)
+			{
+				INameResolutionBlock temp = (INameResolutionBlock) decoder.getSectionList().get(i);
+				
+				System.out.println("SECTION NAME RESOLUTION BLOCK");
+				
+				if (temp.getRecords()!=null)
+				{
+					System.out.println("IPV4 ENTRIES -------------------");
+					for (int j = 0; j  < temp.getRecords().getIpv4DnsEntries().size();j++)
+					{
+						System.out.println(temp.getRecords().getIpv4DnsEntries().get(j).getIpAddr());
+						
+						for (int k = 0; k  < temp.getRecords().getIpv4DnsEntries().get(j).getDnsEntries().size();k++)
+						{
+							System.out.print("\t" + temp.getRecords().getIpv4DnsEntries().get(j).getDnsEntries().get(k) + ";");
+						}
+						System.out.println("");
+					}
+					
+					System.out.println("IPV6 ENTRIES -------------------");
+					for (int j = 0; j  < temp.getRecords().getIpv6DnsEntries().size();j++)
+					{
+						System.out.println(temp.getRecords().getIpv6DnsEntries().get(j).getIpAddr());
+						
+						for (int k = 0; k  < temp.getRecords().getIpv6DnsEntries().get(j).getDnsEntries().size();k++)
+						{
+							System.out.print("\t" + temp.getRecords().getIpv6DnsEntries().get(j).getDnsEntries().get(k) + ";");
+						}
+						System.out.println("");
+					}
+				}
+				
+				if (temp.getOptions()!=null)
+				{
+					if (!temp.getOptions().getDnsIpv4Addr().equals(""))
+						System.out.println("DNS IPV4 address    : " + temp.getOptions().getDnsIpv4Addr());
+					if (!temp.getOptions().getDnsIpv6Addr().equals(""))
+						System.out.println("DNS IPV6 address    : " + temp.getOptions().getDnsIpv6Addr());
+					if (!temp.getOptions().getDnsName().equals(""))
+						System.out.println("DNS SERVER NAME     : " + temp.getOptions().getDnsName());
+				}
 				System.out.println("##########################################################");
 			}
 		}
