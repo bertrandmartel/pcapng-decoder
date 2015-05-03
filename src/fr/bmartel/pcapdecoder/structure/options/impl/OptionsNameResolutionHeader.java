@@ -39,7 +39,6 @@ public class OptionsNameResolutionHeader extends OptionsAbstr{
 						commonObject.setComment(new String(data,"UTF-8"));
 					break;
 				case 2:
-
 					if (!isBigEndian)
 						commonObject.setDnsName(new String(UtilFunctions.convertLeToBe(data),"UTF-8"));
 					else

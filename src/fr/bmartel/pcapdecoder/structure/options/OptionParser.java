@@ -99,7 +99,9 @@ public class OptionParser {
 			if (isRecord)
 				option=new OptionsRecordNameResolutionObject();
 			else 
+			{
 				option=new OptionsNameResolutionObject();
+			}
 		}
 		
 		int optionLength = -1;

@@ -79,6 +79,7 @@ public class PcapOptions implements IPcapngOptions{
 		}
 		if (type == BlockTypes.NAME_RESOLUTION_BLOCK)
 		{
+			
 			if (option instanceof IOptionsRecordNameResolution)
 			{
 				OptionsRecordNameResolutionHeader optionImpl = new OptionsRecordNameResolutionHeader(optionCode,optionValue,isBigEndian,this.option);

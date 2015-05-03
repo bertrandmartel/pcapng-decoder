@@ -61,7 +61,8 @@ public class NameResolutionHeader implements INameResolutionBlock,IPcapngType {
 				//parse set of options
 				OptionParser optionParser2 = new OptionParser(Arrays.copyOfRange(data, initIndex,data.length), isBigEndian,type,false);
 				optionParser2.decode();
-				this.options=(IOptionsNameResolutionHeader) optionParser.getOption();
+				this.options=(IOptionsNameResolutionHeader) optionParser2.getOption();
+				System.out.println(this.options==null);
 			}
 		}
 	}
