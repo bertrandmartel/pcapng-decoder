@@ -44,6 +44,9 @@ _IStatisticsBLock
 _IDescritpionBlock
 
 A getSectionList().get(index) instanceof ISectionHeaderBlock will permit you to cast the latter interface to get access to the section's characteristics.
+
+packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
+
 -------------------------------------------------------------------------
 
 Project is JRE 1.7 compliant

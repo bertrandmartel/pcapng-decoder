@@ -159,7 +159,7 @@ public class MainParser {
 		try {
 			data = Files.readAllBytes(path2);
 		} catch (IOException e) {
-			System.err.print("Error file path is incorrect");
+			System.err.println("Error file path is incorrect");
 		}
 
 		return data;

@@ -142,7 +142,7 @@ public class EnhancedPacketHeader implements IEnhancedPacketBLock,IPcapngType{
 			
 			if (capturedLength>0)
 			{
-				packetData=UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 20,20+capturedLength));
+				packetData=Arrays.copyOfRange(data, 20,20+capturedLength);
 			}
 			else
 			{
