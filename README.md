@@ -1,44 +1,46 @@
-#######################################################################
-#################  PCAPNG FILE PARSER IN JAVA #########################
-#######################################################################
+# PCAPNG File Parser in Java #
 
-=> http://akinaru.github.io/pcapng-java/
+http://akinaru.github.io/pcapng-java/
 
-Update 04/05/2015
+<i>Update 04/05/2015</i>
 
-=> will parse pcap ng file with following sections  :
-_ Section Header
-_ Interface Description
-_ Interface Statistics
-_ Enhanced Packet
-_ Name Resolution
+Will decode pcap ng file with following sections  :
+* Section Header
+* Interface Description
+* Interface Statistics
+* Enhanced Packet
+* Name Resolution
 
 Further section type will be added in the future.
 
------------------------------------------------------------------------
+<hr/>
+
 COMMAND LINE SYNTAX : 
 
 <b>java -jar pcapngdecoder-1.0.jar -f test.pcapng -v</b>
 
 -f <file.pcapng> : input file
+
 -v               : verbose, will show all section parsing content
------------------------------------------------------------------------
+
+<hr/>
+
 PROGRAM SYNTAX :
 
-```byte[] dataFromFile = readFile("test.pcapng");```
+``byte[] dataFromFile = readFile("test.pcapng");``
 
-```PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);```
-```pcapNgDecoder.decode();```
+``PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);``
+``pcapNgDecoder.decode();``
 
 dont forget the import :
-```import fr.bmartel.pcapdecoder.PcapDecoder```;
+``import fr.bmartel.pcapdecoder.PcapDecoder;``
 
 You will access all parsed data from pcapNgDecoder object.
-A complete example is present in ```fr.bmartel.pcapdecoder.main.DisplayAllPacket``` class
+A complete example is present in ``fr.bmartel.pcapdecoder.main.DisplayAllPacket`` class
 
 getSectionList() : retrieve all sections Object
 
-Access to section type is possible with reflection using instanceof with a set of interface defined in package fr.bmartel.pcapdecoder.structure.types.inter :
+Access to section type is possible with reflection using instanceof with a set of interface defined in package ``fr.bmartel.pcapdecoder.structure.types.inter`` :
 
 For now only 4 are parsed successfully :
 
@@ -48,11 +50,11 @@ For now only 4 are parsed successfully :
 * IDescritpionBlock
 * INameResolutionBlock
 
-A getSectionList().get(index) instanceof ISectionHeaderBlock will permit you to cast the latter interface to get access to the section's characteristics.
+A ``getSectionList().get(index) instanceof ISectionHeaderBlock`` will permit you to cast the latter interface to get access to the section's characteristics.
 
 packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
 
--------------------------------------------------------------------------
+<hr/>
 
 * Project is JRE 1.7 compliant
 * You can build it with ant => build.xml
