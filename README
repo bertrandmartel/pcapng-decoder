@@ -4,11 +4,12 @@
 
 Update 04/05/2015
 
-=> will parse pcap ng file with following sections only :
+=> will parse pcap ng file with following sections  :
 _ Section Header
 _ Interface Description
 _ Interface Statistics
 _ Enhanced Packet
+_ Name Resolution
 
 Further section type will be added in the future.
 
@@ -42,6 +43,7 @@ _ISectionHeaderBlock
 _IEnhancedPacketBlock
 _IStatisticsBLock
 _IDescritpionBlock
+_INameResolutionBlock
 
 A getSectionList().get(index) instanceof ISectionHeaderBlock will permit you to cast the latter interface to get access to the section's characteristics.
 

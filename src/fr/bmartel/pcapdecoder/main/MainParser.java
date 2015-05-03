@@ -50,6 +50,7 @@ For now following sections are available to be parsed :
 <li>Interface Description</li>
 <li>Interface Statistics</li>
 <li>Enhanced Packet</li>
+<li>Name Resolution</li>
 </ul>
 </p>
 

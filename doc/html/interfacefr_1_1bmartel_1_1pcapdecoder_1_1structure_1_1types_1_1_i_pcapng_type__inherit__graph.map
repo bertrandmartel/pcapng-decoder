@@ -2,5 +2,6 @@
 <area shape="rect" id="node3" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_enhanced_packet_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lEnhancedPacketHeader" alt="" coords="305,5,583,51"/>
 <area shape="rect" id="node5" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_interface_description_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lInterfaceDescriptionHeader" alt="" coords="305,74,583,121"/>
 <area shape="rect" id="node7" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_interface_statistics_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lInterfaceStatisticsHeader" alt="" coords="305,143,583,190"/>
-<area shape="rect" id="node9" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_section_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lSectionHeader" alt="" coords="305,213,583,259"/>
+<area shape="rect" id="node9" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_name_resolution_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lNameResolutionHeader" alt="" coords="305,213,583,259"/>
+<area shape="rect" id="node11" href="$classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1types_1_1impl_1_1_section_header.html" title="fr.bmartel.pcapdecoder.structure.types.impl.\lSectionHeader" alt="" coords="305,282,583,329"/>
 </map>

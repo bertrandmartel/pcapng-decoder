@@ -9,5 +9,9 @@ var searchData=
   ['optionsenhancedheader',['OptionsEnhancedHeader',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1impl_1_1_options_enhanced_header.html',1,'fr::bmartel::pcapdecoder::structure::options::impl']]],
   ['optionsinterfacedescriptionheader',['OptionsInterfaceDescriptionHeader',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1impl_1_1_options_interface_description_header.html',1,'fr::bmartel::pcapdecoder::structure::options::impl']]],
   ['optionsinterfacestatisticsheader',['OptionsInterfaceStatisticsHeader',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1impl_1_1_options_interface_statistics_header.html',1,'fr::bmartel::pcapdecoder::structure::options::impl']]],
+  ['optionsnameresolutionheader',['OptionsNameResolutionHeader',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1impl_1_1_options_name_resolution_header.html',1,'fr::bmartel::pcapdecoder::structure::options::impl']]],
+  ['optionsnameresolutionobject',['OptionsNameResolutionObject',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1object_1_1_options_name_resolution_object.html',1,'fr::bmartel::pcapdecoder::structure::options::object']]],
+  ['optionsrecordnameresolutionheader',['OptionsRecordNameResolutionHeader',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1impl_1_1_options_record_name_resolution_header.html',1,'fr::bmartel::pcapdecoder::structure::options::impl']]],
+  ['optionsrecordnameresolutionobject',['OptionsRecordNameResolutionObject',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1object_1_1_options_record_name_resolution_object.html',1,'fr::bmartel::pcapdecoder::structure::options::object']]],
   ['optionssectionheader',['OptionsSectionHeader',['../classfr_1_1bmartel_1_1pcapdecoder_1_1structure_1_1options_1_1impl_1_1_options_section_header.html',1,'fr::bmartel::pcapdecoder::structure::options::impl']]]
 ];
