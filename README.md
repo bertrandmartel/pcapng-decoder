@@ -1,10 +1,10 @@
 # PCAPNG File Parser in Java #
 
-=> http://akinaru.github.io/pcapng-java/
+http://akinaru.github.io/pcapng-java/
 
-Update 04/05/2015
+<i>Update 04/05/2015</i>
 
-=> will parse pcap ng file with following sections  :
+Will decode pcap ng file with following sections  :
 * Section Header
 * Interface Description
 * Interface Statistics
@@ -13,14 +13,18 @@ Update 04/05/2015
 
 Further section type will be added in the future.
 
------------------------------------------------------------------------
+<hr/>
+
 COMMAND LINE SYNTAX : 
 
 <b>java -jar pcapngdecoder-1.0.jar -f test.pcapng -v</b>
 
 -f <file.pcapng> : input file
+
 -v               : verbose, will show all section parsing content
------------------------------------------------------------------------
+
+<hr/>
+
 PROGRAM SYNTAX :
 
 ``byte[] dataFromFile = readFile("test.pcapng");``
@@ -50,7 +54,7 @@ A ``getSectionList().get(index) instanceof ISectionHeaderBlock`` will permit you
 
 packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
 
--------------------------------------------------------------------------
+<hr/>
 
 * Project is JRE 1.7 compliant
 * You can build it with ant => build.xml
