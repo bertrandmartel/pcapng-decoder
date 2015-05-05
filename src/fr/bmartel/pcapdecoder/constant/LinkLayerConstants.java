@@ -56,7 +56,7 @@ public class LinkLayerConstants {
 		LINK_LAYER_LIST.put(124,"LINKTYPE_RIO"                   );
 		LINK_LAYER_LIST.put(125,"LINKTYPE_PCI_EXP"               );
 		LINK_LAYER_LIST.put(126,"LINKTYPE_AURORA"                );
-		LINK_LAYER_LIST.put(127,"LINKTYPE_IEEE802_11_RADIO"      );
+		LINK_LAYER_LIST.put(127,"LINKTYPE_IEEE802_11_RADIOTAP"   );
 		LINK_LAYER_LIST.put(128,"LINKTYPE_TZSP"                  );
 		LINK_LAYER_LIST.put(129,"LINKTYPE_ARCNET_LINUX"          );
 		LINK_LAYER_LIST.put(130,"LINKTYPE_JUNIPER_MLPPP"         );
