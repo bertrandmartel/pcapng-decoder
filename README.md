@@ -17,12 +17,13 @@ Further section type will be added in the future.
 
 COMMAND LINE SYNTAX : 
 
-``java -jar pcapngdecoder-1.0.jar -f test.pcapng -v``
+``java -jar pcapngdecoder-1.0.jar -f ../pcapfile/exemple.pcapng -v``
 
 -f <file.pcapng> : input file
 
 -v               : verbose, will show all section parsing content
 
+Example laucnhed from release folder
 <hr/>
 
 PROGRAM SYNTAX :
