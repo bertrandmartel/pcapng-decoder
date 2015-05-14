@@ -28,10 +28,12 @@ Example laucnhed from release folder
 
 PROGRAM SYNTAX :
 
-``byte[] dataFromFile = readFile("test.pcapng");``
+```
+byte[] dataFromFile = readFile("test.pcapng");
 
-``PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);``
-``pcapNgDecoder.decode();``
+PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);
+pcapNgDecoder.decode();
+```
 
 dont forget the import :
 ``import fr.bmartel.pcapdecoder.PcapDecoder;``
