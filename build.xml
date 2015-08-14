@@ -24,9 +24,12 @@
 	</target>
 	
 	<target name="build" depends="compile">
-		<jar destfile="${basedir}/release/${project-name}-${version}.jar">
+		<jar destfile="${basedir}/release/${project-name}-${version}.jar"  filesetmanifest="mergewithoutmain">
 			<fileset dir="${basedir}/bin" />
 			<zipgroupfileset dir="${basedir}/libs" includes="**/*.jar" />
+			<manifest>
+			    <attribute name="Main-Class" value="fr.bmartel.pcapdecoder.main.MainParser"/>
+			 </manifest>
 		</jar>
 	</target>
 
