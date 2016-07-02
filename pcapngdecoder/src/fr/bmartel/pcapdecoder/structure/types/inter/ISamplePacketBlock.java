@@ -47,7 +47,7 @@ package fr.bmartel.pcapdecoder.structure.types.inter;
  */
 public interface ISamplePacketBlock {
 
-    public int getPacketLength();
+    int getPacketLength();
 
-    public byte[] getPacketData();
+    byte[] getPacketData();
 }

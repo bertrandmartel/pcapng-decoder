@@ -35,63 +35,63 @@ public interface IOptionsDescriptionHeader extends IOptions {
      *
      * @return
      */
-    public String getInterfaceName();
+    String getInterfaceName();
 
     /**
      * Description of the device used to capture the data
      *
      * @return
      */
-    public String getInterfaceDescription();
+    String getInterfaceDescription();
 
     /**
      * IPV4 address
      *
      * @return
      */
-    public String getInterfaceIpv4NetworkAddr();
+    String getInterfaceIpv4NetworkAddr();
 
     /**
      * IP netmask
      *
      * @return
      */
-    public String getInterfaceNetmask();
+    String getInterfaceNetmask();
 
     /**
      * IPV6 address
      *
      * @return
      */
-    public String getIpv6NetworkAddr();
+    String getIpv6NetworkAddr();
 
     /**
      * MAC address
      *
      * @return
      */
-    public String getInterfaceMacAddr();
+    String getInterfaceMacAddr();
 
     /**
      * EUI address
      *
      * @return
      */
-    public String getInterfaceEuiAddr();
+    String getInterfaceEuiAddr();
 
     /**
      * interface speed in bps
      *
      * @return
      */
-    public int getInterfaceSpeed();
+    int getInterfaceSpeed();
 
     /**
      * Resolution of timestamp (6 means microsecond resolution for instance)
      *
      * @return
      */
-    public int getTimeStampResolution();
+    int getTimeStampResolution();
 
     /**
      * indicate Time zone => offset from UTC time => indicating time zone
@@ -99,7 +99,7 @@ public interface IOptionsDescriptionHeader extends IOptions {
      *
      * @return
      */
-    public int getTimeBias();
+    int getTimeBias();
 
 
     /**
@@ -107,22 +107,22 @@ public interface IOptionsDescriptionHeader extends IOptions {
      *
      * @return string filter
      */
-    public String getInterfaceFilter();
+    String getInterfaceFilter();
 
     /**
      * Name of the operating system
      *
      * @return
      */
-    public String getInterfaceOperatingSystem();
+    String getInterfaceOperatingSystem();
 
 
-    public int getInterfaceFrameCheckSequenceLength();
+    int getInterfaceFrameCheckSequenceLength();
 
     /**
      * Timestamp offset for each packet / if not present timestamp are absolute
      *
      * @return
      */
-    public int getTimeStampOffset();
+    int getTimeStampOffset();
 }

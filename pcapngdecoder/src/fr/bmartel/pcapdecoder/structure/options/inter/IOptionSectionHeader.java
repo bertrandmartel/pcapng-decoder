@@ -35,19 +35,19 @@ public interface IOptionSectionHeader extends IOptions {
      *
      * @return
      */
-    public String getHardware();
+    String getHardware();
 
     /**
      * name of the OS
      *
      * @return
      */
-    public String getOS();
+    String getOS();
 
     /**
      * name of the user application
      *
      * @return
      */
-    public String getUserAppl();
+    String getUserAppl();
 }

@@ -32,7 +32,7 @@ import java.util.ArrayList;
  */
 public interface IDnsEntries {
 
-    public ArrayList<String> getDnsEntries();
+    ArrayList<String> getDnsEntries();
 
-    public String getIpAddr();
+    String getIpAddr();
 }

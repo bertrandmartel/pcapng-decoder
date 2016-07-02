@@ -35,5 +35,5 @@ public interface IOptions {
      *
      * @return
      */
-    public String getComment();
+    String getComment();
 }

@@ -146,7 +146,7 @@ public class DisplayAllPacket {
                     System.out.println("packet length            : " + temp.getPacketLength());
                 if (temp.getPacketData() != null)
                     System.out.println(UtilFunctions.byteArrayToStringMessage("packet data             ", temp
-							.getPacketData(), '|'));
+                            .getPacketData(), '|'));
 
                 IOptionsEnhancedPacketHeader optionsList = temp.getOptions();
 
@@ -163,7 +163,7 @@ public class DisplayAllPacket {
                         System.out.println("packet hash type       : " + optionsList.getPacketHashType());
                     if (optionsList.getPacketHashBigEndian() != null)
                         System.out.println(UtilFunctions.byteArrayToStringMessage("packet hash type", optionsList
-								.getPacketHashBigEndian(), '|'));
+                                .getPacketHashBigEndian(), '|'));
 
                     for (int j = 0; j < optionsList.getLinkLayerErrorList().size(); j++) {
                         System.out.println(optionsList.getLinkLayerErrorList().get(i) + " detected");
@@ -192,19 +192,19 @@ public class DisplayAllPacket {
                     if (optionsList.getCaptureStartTime() != -1) {
                         if (timestampResolution == 3) {
                             System.out.println("capture start time       : " + new Date(optionsList
-									.getCaptureStartTime()));
+                                    .getCaptureStartTime()));
                         } else if (timestampResolution == 6) {
                             System.out.println("capture start time       : " + new Date(optionsList
-									.getCaptureStartTime() / 1000));
+                                    .getCaptureStartTime() / 1000));
                         }
                     }
                     if (optionsList.getCaptureEndTime() != -1) {
                         if (timestampResolution == 3) {
                             System.out.println("capture end time         : " + new Date(optionsList.getCaptureEndTime
-									()));
+                                    ()));
                         } else if (timestampResolution == 6) {
                             System.out.println("capture end time         : " + new Date(optionsList.getCaptureEndTime
-									() / 1000));
+                                    () / 1000));
                         }
                     }
                     if (optionsList.getPacketReceivedCount() != -1)
@@ -213,7 +213,7 @@ public class DisplayAllPacket {
                         System.out.println("packet drop count        : " + optionsList.getPacketDropCount());
                     if (optionsList.getPacketAcceptedByFilterCount() != -1)
                         System.out.println("packet accepted by filter   : " + optionsList
-								.getPacketAcceptedByFilterCount());
+                                .getPacketAcceptedByFilterCount());
                     if (optionsList.getPacketDroppedByOS() != -1)
                         System.out.println("packet dropped by OS        : " + optionsList.getPacketDroppedByOS());
                     if (optionsList.getPacketDeliveredToUser() != -1)
@@ -232,7 +232,8 @@ public class DisplayAllPacket {
                         System.out.println(temp.getRecords().getIpv4DnsEntries().get(j).getIpAddr());
 
                         for (int k = 0; k < temp.getRecords().getIpv4DnsEntries().get(j).getDnsEntries().size(); k++) {
-                            System.out.print("\t" + temp.getRecords().getIpv4DnsEntries().get(j).getDnsEntries().get(k) + ";");
+                            System.out.print("\t" + temp.getRecords().getIpv4DnsEntries().get(j).getDnsEntries().get
+                                    (k) + ";");
                         }
                         System.out.println("");
                     }
@@ -242,7 +243,8 @@ public class DisplayAllPacket {
                         System.out.println(temp.getRecords().getIpv6DnsEntries().get(j).getIpAddr());
 
                         for (int k = 0; k < temp.getRecords().getIpv6DnsEntries().get(j).getDnsEntries().size(); k++) {
-                            System.out.print("\t" + temp.getRecords().getIpv6DnsEntries().get(j).getDnsEntries().get(k) + ";");
+                            System.out.print("\t" + temp.getRecords().getIpv6DnsEntries().get(j).getDnsEntries().get
+                                    (k) + ";");
                         }
                         System.out.println("");
                     }

@@ -35,48 +35,48 @@ public interface IOptionsStatisticsHeader extends IOptions {
      *
      * @return
      */
-    public Long getCaptureStartTime();
+    Long getCaptureStartTime();
 
     /**
      * capture end time (timestamp resolution is defined in Interface description header check exemple)
      *
      * @return
      */
-    public Long getCaptureEndTime();
+    Long getCaptureEndTime();
 
     /**
      * packet received count
      *
      * @return
      */
-    public Long getPacketReceivedCount();
+    Long getPacketReceivedCount();
 
     /**
      * packet drop count
      *
      * @return
      */
-    public Long getPacketDropCount();
+    Long getPacketDropCount();
 
     /**
      * packet accepted by filter count
      *
      * @return
      */
-    public Long getPacketAcceptedByFilterCount();
+    Long getPacketAcceptedByFilterCount();
 
     /**
      * packet dropped by Operating system count
      *
      * @return
      */
-    public Long getPacketDroppedByOS();
+    Long getPacketDroppedByOS();
 
     /**
      * packet deliver to use count
      *
      * @return
      */
-    public Long getPacketDeliveredToUser();
+    Long getPacketDeliveredToUser();
 
 }

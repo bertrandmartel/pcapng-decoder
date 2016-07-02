@@ -34,7 +34,7 @@ import fr.bmartel.pcapdecoder.network.IDnsEntries;
  */
 public interface IOptionsRecordNameResolution extends IOptions {
 
-    public ArrayList<IDnsEntries> getIpv4DnsEntries();
+    ArrayList<IDnsEntries> getIpv4DnsEntries();
 
-    public ArrayList<IDnsEntries> getIpv6DnsEntries();
+    ArrayList<IDnsEntries> getIpv6DnsEntries();
 }

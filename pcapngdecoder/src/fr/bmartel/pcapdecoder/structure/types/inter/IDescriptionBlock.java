@@ -55,14 +55,14 @@ public interface IDescriptionBlock {
      *
      * @return
      */
-    public String getLinkType();
+    String getLinkType();
 
     /**
      * maximum number of bytes dumped from each packet in this pcap ng file
      *
      * @return
      */
-    public int getSnapLen();
+    int getSnapLen();
 
-    public IOptionsDescriptionHeader getOptions();
+    IOptionsDescriptionHeader getOptions();
 }

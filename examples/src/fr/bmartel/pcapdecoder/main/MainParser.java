@@ -33,28 +33,28 @@ import fr.bmartel.pcapdecoder.utils.DecoderStatus;
 
 /**
  * @mainpage PCAP NG JAVA File parser
- *
-COMMAND LINE SYNTAX : 
-
-java -jar pcapngdecoder-1.0.jar -f test.pcapng -v
-
-<ul>
-<li>-f <file.pcapng> : input file</li>
-<li>-v               : verbose, will show all section parsing content</li>
-</ul>
-
-<p>
-For now following sections are available to be parsed :
-<ul>
-<li>Section Header</li>
-<li>Interface Description</li>
-<li>Interface Statistics</li>
-<li>Enhanced Packet</li>
-<li>Name Resolution</li>
-</ul>
-</p>
-
-Specification from <a>https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html</a>
+ * <p/>
+ * COMMAND LINE SYNTAX :
+ * <p/>
+ * java -jar pcapngdecoder-1.0.jar -f test.pcapng -v
+ * <p/>
+ * <ul>
+ * <li>-f <file.pcapng> : input file</li>
+ * <li>-v               : verbose, will show all section parsing content</li>
+ * </ul>
+ * <p/>
+ * <p>
+ * For now following sections are available to be parsed :
+ * <ul>
+ * <li>Section Header</li>
+ * <li>Interface Description</li>
+ * <li>Interface Statistics</li>
+ * <li>Enhanced Packet</li>
+ * <li>Name Resolution</li>
+ * </ul>
+ * </p>
+ * <p/>
+ * Specification from <a>https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html</a>
  */
 
 /**

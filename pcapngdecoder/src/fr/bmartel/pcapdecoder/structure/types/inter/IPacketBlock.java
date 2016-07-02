@@ -59,17 +59,17 @@ package fr.bmartel.pcapdecoder.structure.types.inter;
  */
 public interface IPacketBlock {
 
-    public int getInterfaceId();
+    int getInterfaceId();
 
-    public int getDropsCount();
+    int getDropsCount();
 
-    public Long getMillis();
+    Long getMillis();
 
-    public int getCaptureLength();
+    int getCaptureLength();
 
-    public int getPacketLength();
+    int getPacketLength();
 
-    public byte[] getPacketData();
+    byte[] getPacketData();
 
-    public byte[] getOptionsData();
+    byte[] getOptionsData();
 }

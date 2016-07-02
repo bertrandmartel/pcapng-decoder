@@ -61,15 +61,15 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsEnhancedPacketHead
  */
 public interface IEnhancedPacketBLock {
 
-    public int getInterfaceId();
+    int getInterfaceId();
 
-    public Long getTimeStamp();
+    Long getTimeStamp();
 
-    public int getCapturedLength();
+    int getCapturedLength();
 
-    public int getPacketLength();
+    int getPacketLength();
 
-    public byte[] getPacketData();
+    byte[] getPacketData();
 
-    public IOptionsEnhancedPacketHeader getOptions();
+    IOptionsEnhancedPacketHeader getOptions();
 }

@@ -52,9 +52,9 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsStatisticsHeader;
  */
 public interface IStatisticsBlock {
 
-    public int getInterfaceId();
+    int getInterfaceId();
 
-    public Long getTimeStamp();
+    Long getTimeStamp();
 
-    public IOptionsStatisticsHeader getOptions();
+    IOptionsStatisticsHeader getOptions();
 }
