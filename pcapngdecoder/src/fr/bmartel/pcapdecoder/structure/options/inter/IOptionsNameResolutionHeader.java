@@ -35,19 +35,19 @@ public interface IOptionsNameResolutionHeader extends IOptions {
      *
      * @return
      */
-    public String getDnsName();
+    String getDnsName();
 
     /**
      * Retrieve DNS IPV4 server address
      *
      * @return
      */
-    public String getDnsIpv4Addr();
+    String getDnsIpv4Addr();
 
     /**
      * Retrieve DNS IPV6 server address
      *
      * @return
      */
-    public String getDnsIpv6Addr();
+    String getDnsIpv6Addr();
 }

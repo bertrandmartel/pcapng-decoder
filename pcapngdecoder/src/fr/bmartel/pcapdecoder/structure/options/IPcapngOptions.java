@@ -30,10 +30,10 @@ package fr.bmartel.pcapdecoder.structure.options;
  */
 public interface IPcapngOptions {
 
-    public int getOptionCode();
+    int getOptionCode();
 
-    public int getOptionLength();
+    int getOptionLength();
 
-    public byte[] getOptionValue();
+    byte[] getOptionValue();
 
 }

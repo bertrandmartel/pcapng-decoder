@@ -58,7 +58,7 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsRecordNameResoluti
  */
 public interface INameResolutionBlock {
 
-    public IOptionsRecordNameResolution getRecords();
+    IOptionsRecordNameResolution getRecords();
 
-    public IOptionsNameResolutionHeader getOptions();
+    IOptionsNameResolutionHeader getOptions();
 }

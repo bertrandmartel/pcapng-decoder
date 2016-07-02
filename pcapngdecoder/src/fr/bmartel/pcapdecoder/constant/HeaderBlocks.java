@@ -31,7 +31,6 @@ import fr.bmartel.pcapdecoder.structure.BlockTypes;
  * Block header for Pcap Ng files
  *
  * @author Bertrand Martel
- *
  */
 public class HeaderBlocks {
 

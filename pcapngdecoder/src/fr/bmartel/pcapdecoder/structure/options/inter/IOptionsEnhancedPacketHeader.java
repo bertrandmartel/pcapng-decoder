@@ -42,48 +42,48 @@ public interface IOptionsEnhancedPacketHeader extends IOptions {
      *
      * @return
      */
-    public PacketBoundState getPacketBound();
+    PacketBoundState getPacketBound();
 
     /**
      * Retriev reception state (broadcast / unicast / multicast / promiscuous)
      *
      * @return
      */
-    public PacketReceptionType getPacketReceptionType();
+    PacketReceptionType getPacketReceptionType();
 
     /**
      * get FCS length
      *
      * @return
      */
-    public int getFrameCheckSumLength();
+    int getFrameCheckSumLength();
 
     /**
      * get drop packet count
      *
      * @return
      */
-    public int getDropPacketCount();
+    int getDropPacketCount();
 
     /**
      * get packet hash type (2SCOMP / MD5 / CRC32/ SHA1  ...)
      *
      * @return
      */
-    public PacketHashType getPacketHashType();
+    PacketHashType getPacketHashType();
 
     /**
      * get packet hash
      *
      * @return
      */
-    public byte[] getPacketHashBigEndian();
+    byte[] getPacketHashBigEndian();
 
     /**
      * get a list of error (link layer dependant)
      *
      * @return
      */
-    public ArrayList<LinkLayerError> getLinkLayerErrorList();
+    ArrayList<LinkLayerError> getLinkLayerErrorList();
 
 }

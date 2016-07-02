@@ -54,11 +54,11 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionSectionHeader;
  */
 public interface ISectionHeaderBlock {
 
-    public int getMajorVersion();
+    int getMajorVersion();
 
-    public int getMinorVersion();
+    int getMinorVersion();
 
-    public int getSectionLength();
+    int getSectionLength();
 
-    public IOptionSectionHeader getOptions();
+    IOptionSectionHeader getOptions();
 }
