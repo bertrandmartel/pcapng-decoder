@@ -23,8 +23,6 @@
  */
 package fr.bmartel.pcapngdecoder.main;
 
-import java.util.Date;
-
 import fr.bmartel.pcapdecoder.PcapDecoder;
 import fr.bmartel.pcapdecoder.constant.PacketBoundState;
 import fr.bmartel.pcapdecoder.constant.PacketHashType;
@@ -32,16 +30,12 @@ import fr.bmartel.pcapdecoder.constant.PacketReceptionType;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionSectionHeader;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsDescriptionHeader;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsEnhancedPacketHeader;
-import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsNameResolutionHeader;
-import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsRecordNameResolution;
 import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsStatisticsHeader;
-import fr.bmartel.pcapdecoder.structure.types.inter.IDescriptionBlock;
-import fr.bmartel.pcapdecoder.structure.types.inter.IEnhancedPacketBLock;
-import fr.bmartel.pcapdecoder.structure.types.inter.INameResolutionBlock;
-import fr.bmartel.pcapdecoder.structure.types.inter.ISectionHeaderBlock;
-import fr.bmartel.pcapdecoder.structure.types.inter.IStatisticsBlock;
+import fr.bmartel.pcapdecoder.structure.types.inter.*;
 import fr.bmartel.pcapdecoder.utils.UtilFunctions;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Date;
 
 public class DisplayAllPacket {
 
@@ -57,7 +51,9 @@ public class DisplayAllPacket {
         int timestampResolution = 3;
 
         for (int i = 0; i < decoder.getSectionList().size(); i++) {
+
             if (decoder.getSectionList().get(i) instanceof ISectionHeaderBlock) {
+
                 ISectionHeaderBlock temp = (ISectionHeaderBlock) decoder.getSectionList().get(i);
 
                 logger.debug("SECTION HEADER BLOCK");
@@ -81,6 +77,7 @@ public class DisplayAllPacket {
                 }
                 logger.debug("##########################################################");
             } else if (decoder.getSectionList().get(i) instanceof IDescriptionBlock) {
+                
                 IDescriptionBlock temp = (IDescriptionBlock) decoder.getSectionList().get(i);
 
                 logger.debug("SECTION INTERFACE DESCRIPTION BLOCK");

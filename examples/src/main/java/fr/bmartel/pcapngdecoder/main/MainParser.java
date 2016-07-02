@@ -23,15 +23,12 @@
  */
 package fr.bmartel.pcapngdecoder.main;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import fr.bmartel.pcapdecoder.PcapDecoder;
 import fr.bmartel.pcapdecoder.utils.DecoderStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
 
 /**
  * @mainpage PCAP NG JAVA File parser
@@ -85,10 +82,10 @@ public class MainParser {
 
         if (args.length > 1) {
 
-            byte[] dataFromFile = new byte[]{};
+            String inputFile;
 
             if (args[0].equals("-f")) {
-                dataFromFile = readFile(args[1]);
+                inputFile = args[1];
                 if (args.length > 2 && args[2].equals("-v")) {
                     verbose = true;
                 }
@@ -97,7 +94,7 @@ public class MainParser {
 
                 if (args.length > 2) {
                     if (args[1].equals("-f")) {
-                        dataFromFile = readFile(args[2]);
+                        inputFile = args[2];
                     } else {
                         LOGGER.error("Insufficient argument");
                         return;
@@ -111,47 +108,28 @@ public class MainParser {
                 return;
             }
 
-            if (dataFromFile.length > 0) {
-                PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);
+            if (inputFile != null) {
+
+                PcapDecoder pcapNgDecoder = new PcapDecoder(inputFile);
                 int status = pcapNgDecoder.decode();
 
                 if (status == DecoderStatus.SUCCESS_STATUS) {
+
                     long endTime = System.currentTimeMillis();
                     long totalTime = endTime - startTime;
+
                     LOGGER.debug("Decoding time : " + totalTime + " millis");
+
                     if (verbose) {
                         DisplayAllPacket.displayResult(pcapNgDecoder, LOGGER);
                     }
                 } else
                     LOGGER.error("Decoder failure");
             } else {
-                LOGGER.error("File is empty");
+                LOGGER.error("File is invalid");
             }
         } else {
             LOGGER.error("Insufficient argument");
         }
     }
-
-    /**
-     * Read all bytes from file
-     *
-     * @param path file path
-     */
-    static byte[] readFile(String path) {
-
-        LOGGER.debug(path);
-        
-        Path path2 = Paths.get(path);
-
-        byte[] data = new byte[]{};
-
-        try {
-            data = Files.readAllBytes(path2);
-        } catch (IOException e) {
-            LOGGER.error("Error file path is incorrect");
-        }
-
-        return data;
-    }
-
 }
