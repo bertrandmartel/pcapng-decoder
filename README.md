@@ -1,4 +1,4 @@
-# PCAPNG File Parser #
+# PCAPNG Decoder Library #
 
 http://akinaru.github.io/pcapng-decoder/
 
@@ -28,7 +28,6 @@ https://github.com/akinaru/pcapng-decoder/releases
 
 ```
 ./gradlew run -PappArgs="['-f', 'path_to_file/pcapfile/exemple.pcapng'  , '-v' ]"
-
 ```
 
 |  args            | description                                        |
