@@ -1,10 +1,13 @@
 # PCAPNG File Parser in Java #
 
-http://akinaru.github.io/pcapng-decoder-java/
+[![Build Status](https://travis-ci.org/akinaru/pcapng-decoder.svg?branch=master)](https://travis-ci.org/akinaru/pcapng-decoder)
+[ ![Download](https://api.bintray.com/packages/akinaru/maven/pcapng-parser/images/download.svg) ](https://bintray.com/akinaru/maven/pcapng-parser/_latestVersion)
+[![Coverage Status](https://coveralls.io/repos/github/akinaru/pcapng-decoder/badge.svg?branch=master)](https://coveralls.io/github/akinaru/pcapng-decoder?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1188df87489749a48978a5d953662d18)](https://www.codacy.com/app/bmartel.fr/pcapng-decoder?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=akinaru/pcapng-decoder&amp;utm_campaign=Badge_Grade)
+[![Javadoc](http://javadoc-badge.appspot.com/com.github.akinaru/pcapng-parser.svg?label=javadoc)](http://javadoc-badge.appspot.com/com.github.akinaru/pcapng-parser)
+[![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
-<i>Update 04/05/2015</i>
-
-Will decode pcap ng file with following sections  :
+decode pcapng file with following sections  :
 * Section Header
 * Interface Description
 * Interface Statistics
