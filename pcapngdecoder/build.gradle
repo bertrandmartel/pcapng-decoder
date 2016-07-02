@@ -1,0 +1,127 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group 'com.github.akinaru'
+version '1.1'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+def siteUrl = 'https://github.com/akinaru/pcapng-decoder'
+def gitUrl = 'https://github.com/akinaru/pcapng-decoder.git'
+
+bintray {
+    user = "$System.env.BINTRAY_USER"
+    key = "$System.env.BINTRAY_KEY"
+
+    configurations = ['archives'] //When uploading configuration files
+
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
+
+    pkg {
+        repo = 'maven'
+        name = 'pcapng-parser'
+        desc = 'pcapng file parser'
+        websiteUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/akinaru/pcapng-decoder/issues'
+        vcsUrl = gitUrl
+        licenses = ['MIT']
+        labels = ['pcapng']
+        publicDownloadNumbers = true
+
+        version {
+            name = project.version //Bintray logical version name
+            vcsTag = project.version
+
+            gpg {
+                sign = true
+                passphrase = "$System.env.GPG_PASSPHRASE"
+            }
+
+            mavenCentralSync {
+                sync = true
+                //Optional (true by default). Determines whether to sync the version to Maven Central.
+                user = "$System.env.MAVEN_CENTRAL_USER_TOKEN" //OSS user token
+                password = "$System.env.MAVEN_CENTRAL_PASSWORD" //OSS user password
+                close = '1'
+                //Optional property. By default the staging repository is closed and artifacts are released to Maven Central. You can optionally turn this behaviour off (by puting 0 as value) and release the version manually.
+            }
+        }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                description 'pcapng file parser'
+                packaging 'jar'
+                name 'pcapng-parser'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The MIT License'
+                        url 'https://github.com/akinaru/pcapng-decoder/blob/master/LICENSE.md'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'akinaru'
+                        name 'Bertrand Martel'
+                        email 'kiruazoldik92@gmail.com'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/akinaru/pcapng-decoder.git'
+                    developerConnection 'https://github.com/akinaru/pcapng-decoder.git'
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
+}
+
+task generateJavadoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+    destinationDir = file("./doc/")
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
