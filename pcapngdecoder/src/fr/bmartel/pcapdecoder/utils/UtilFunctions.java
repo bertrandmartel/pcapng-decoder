@@ -53,7 +53,7 @@ public class UtilFunctions {
     public static String byteArrayToStringMessage(String message, byte[] array,
                                                   char separator) {
         String log = "";
-        if (!message.equals(""))
+        if (!("").equals.message)
             log = message + " : ";
         if (array != null) {
             for (int count = 0; count < array.length; count++) {
@@ -82,7 +82,7 @@ public class UtilFunctions {
         int dataTmp = data & 0xFF;
         /* Put character in uppercase */
         String value = Integer.toHexString(dataTmp).toUpperCase();
-		/* Add 0 if length equal to 1 */
+        /* Add 0 if length equal to 1 */
         if (value.length() == 1) {
             value = "0" + value;
         }

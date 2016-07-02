@@ -98,10 +98,13 @@ public class PcapDecoder {
      */
     private int parseDataBlock(BlockTypes type, byte[] data, int initIndex) {
         try {
-            int blockLength = parseBlockLength(Arrays.copyOfRange(data, initIndex + 4, initIndex + 8), isBigEndian);
+
+            int index = initIndex;
+
+            int blockLength = parseBlockLength(Arrays.copyOfRange(data, index + 4, index + 8), isBigEndian);
 
             // substract 4 for header and 4 for size (x2 at the end)
-            byte[] dataBlock = Arrays.copyOfRange(data, initIndex + 8, initIndex + (blockLength - 4));
+            byte[] dataBlock = Arrays.copyOfRange(data, index + 8, index + (blockLength - 4));
 
             byte[] dataTemp = dataBlock;
 
@@ -112,8 +115,8 @@ public class PcapDecoder {
             structure.decode();
             pcapSectionList.add(structure.getPcapStruct());
 
-            initIndex += (blockLength - 1) + 1;
-            return initIndex;
+            index += (blockLength - 1) + 1;
+            return index;
         } catch (Exception e) {
             e.printStackTrace();
             return DecoderStatus.FAILED_STATUS;
@@ -126,11 +129,14 @@ public class PcapDecoder {
      * @param sectionType
      */
     public int processSectionType(BlockTypes type, int initIndex) throws DecodeException {
+
+        int index = initIndex;
+
         if (UtilFunctions.compare32Bytes(HeaderBlocks.SECTION_TYPE_LIST.get(type.toString()), Arrays.copyOfRange
-                (data, initIndex, initIndex + 4), isBigEndian)) {
+                (data, index, index + 4), isBigEndian)) {
             if (type == BlockTypes.SECTION_HEADER_BLOCK) {
-                byte endianess = detectEndianness(Arrays.copyOfRange(Arrays.copyOfRange(data, initIndex + 8,
-                        initIndex + 12), 0, 4));
+                byte endianess = detectEndianness(Arrays.copyOfRange(Arrays.copyOfRange(data, index + 8,
+                        index + 12), 0, 4));
 
                 if (endianess == Endianess.BIG_ENDIAN) {
                     isBigEndian = true;
@@ -139,14 +145,14 @@ public class PcapDecoder {
                 }
             }
 
-            initIndex = parseDataBlock(type, data, initIndex);
+            index = parseDataBlock(type, data, index);
 
-            if (initIndex == -1) {
+            if (index == -1) {
                 throw new DecodeException();
             }
-            return initIndex;
+            return index;
         }
-        return initIndex;
+        return index;
     }
 
     /**
