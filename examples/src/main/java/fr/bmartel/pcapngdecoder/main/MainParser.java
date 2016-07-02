@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package fr.bmartel.pcapdecoder.main;
+package fr.bmartel.pcapngdecoder.main;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,6 +30,8 @@ import java.nio.file.Paths;
 
 import fr.bmartel.pcapdecoder.PcapDecoder;
 import fr.bmartel.pcapdecoder.utils.DecoderStatus;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * @mainpage PCAP NG JAVA File parser
@@ -61,15 +63,18 @@ import fr.bmartel.pcapdecoder.utils.DecoderStatus;
  * Start PCAP NG file decoder
  *
  * @author Bertrand Martel <bertrandmartel92@gmail.com>
- *
  */
 public class MainParser {
+
+    /**
+     * logger.
+     */
+    private final static Logger LOGGER = LogManager.getLogger(MainParser.class.getName());
 
     /**
      * Start PCAP NG decoder
      *
      * @param args
-     *
      * @throws InterruptedException
      * @throws IOException
      */
@@ -94,15 +99,15 @@ public class MainParser {
                     if (args[1].equals("-f")) {
                         dataFromFile = readFile(args[2]);
                     } else {
-                        System.err.println("Insufficient argument");
+                        LOGGER.error("Insufficient argument");
                         return;
                     }
                 } else {
-                    System.err.println("Insufficient argument");
+                    LOGGER.error("Insufficient argument");
                     return;
                 }
             } else {
-                System.err.println("Invalid argument");
+                LOGGER.error("Invalid argument");
                 return;
             }
 
@@ -113,27 +118,29 @@ public class MainParser {
                 if (status == DecoderStatus.SUCCESS_STATUS) {
                     long endTime = System.currentTimeMillis();
                     long totalTime = endTime - startTime;
-                    System.out.println("Decoding time : " + totalTime + " millis");
+                    LOGGER.debug("Decoding time : " + totalTime + " millis");
                     if (verbose) {
-                        DisplayAllPacket.displayResult(pcapNgDecoder);
+                        DisplayAllPacket.displayResult(pcapNgDecoder, LOGGER);
                     }
                 } else
-                    System.err.println("Decoder failure");
+                    LOGGER.error("Decoder failure");
             } else {
-                System.err.println("File is empty");
+                LOGGER.error("File is empty");
             }
         } else {
-            System.err.println("Insufficient argument");
+            LOGGER.error("Insufficient argument");
         }
     }
 
     /**
      * Read all bytes from file
      *
-     * @param path
-     *            file path
+     * @param path file path
      */
     static byte[] readFile(String path) {
+
+        LOGGER.debug(path);
+        
         Path path2 = Paths.get(path);
 
         byte[] data = new byte[]{};
@@ -141,7 +148,7 @@ public class MainParser {
         try {
             data = Files.readAllBytes(path2);
         } catch (IOException e) {
-            System.err.println("Error file path is incorrect");
+            LOGGER.error("Error file path is incorrect");
         }
 
         return data;

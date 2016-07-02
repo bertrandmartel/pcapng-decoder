@@ -84,7 +84,6 @@ public class NameResolutionHeader implements INameResolutionBlock, IPcapngType {
 						isBigEndian, type, false);
                 optionParser2.decode();
                 this.options = (IOptionsNameResolutionHeader) optionParser2.getOption();
-                System.out.println(this.options == null);
             }
         }
     }
