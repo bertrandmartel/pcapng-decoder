@@ -49,6 +49,8 @@ public class OptionsSectionHeader extends OptionsAbstr {
                     else
                         commonObject.setUserAppl(new String(data, "UTF-8"));
                     break;
+                default:
+                    break;
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -58,6 +58,8 @@ public class OptionsNameResolutionHeader extends OptionsAbstr {
                         tempIpv6 = data;
                     commonObject.setDnsIpv6Addr(formatIpv4Addr(tempIpv6));
                     break;
+                default:
+                    break;
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

@@ -56,7 +56,7 @@ public class OptionsRecordNameResolutionHeader extends OptionsAbstr {
                                 4)), "UTF-8"));
                     else
                         entries.add(new String(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 4, data.length -
-								1)), "UTF-8"));
+                                1)), "UTF-8"));
 
                     commonObject.addIpv4DnsEntry(new DnsEntryObject(entries, ipv4Addr));
 
@@ -74,12 +74,16 @@ public class OptionsRecordNameResolutionHeader extends OptionsAbstr {
                     ArrayList<String> entriesIpv6 = new ArrayList<String>();
 
                     if (!isBigEndian)
-                        entriesIpv6.add(new String(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 1, data.length - 16)), "UTF-8"));
+                        entriesIpv6.add(new String(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 1, data
+                                .length - 16)), "UTF-8"));
                     else
-                        entriesIpv6.add(new String(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 16, data.length - 1)), "UTF-8"));
+                        entriesIpv6.add(new String(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 16, data
+                                .length - 1)), "UTF-8"));
 
                     commonObject.addIpv6DnsEntry(new DnsEntryObject(entriesIpv6, ipv6Addr));
 
+                    break;
+                default:
                     break;
             }
         } catch (UnsupportedEncodingException e) {
