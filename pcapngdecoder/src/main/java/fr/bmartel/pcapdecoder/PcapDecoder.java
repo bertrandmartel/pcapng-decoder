@@ -162,7 +162,6 @@ public class PcapDecoder {
      */
     public byte decode() {
         if (data == null || data.length < 4) {
-            System.err.println("Error input data format error");
             return DecoderStatus.FAILED_STATUS;
         }
 

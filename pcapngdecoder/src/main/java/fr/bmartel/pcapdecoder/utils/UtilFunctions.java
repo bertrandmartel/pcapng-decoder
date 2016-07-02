@@ -76,7 +76,7 @@ public class UtilFunctions {
     public static String byteArrayToStringMessage(String message, byte[] array,
                                                   char separator) {
         String log = "";
-        if (!("").equals.message)
+        if (!"".equals(message))
             log = message + " : ";
         if (array != null) {
             for (int count = 0; count < array.length; count++) {
