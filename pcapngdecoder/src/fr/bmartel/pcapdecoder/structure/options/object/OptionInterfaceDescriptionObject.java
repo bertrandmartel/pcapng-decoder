@@ -4,177 +4,175 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsDescriptionHeader;
 
 /**
  * Template used for setting values of Interface Description Section
- * 
- * @author Bertrand Martel
  *
+ * @author Bertrand Martel
  */
 public class OptionInterfaceDescriptionObject implements IOptionsDescriptionHeader {
 
-	private String interfaceName = "";
-	
-	private String interfaceDescription = "";
-	
-	private String interfaceIpv4NetworkAddr = "";
-	
-	private String interfaceNetmask="";
-	
-	private String interfaceIpv6NetworkAddr="";
-	
-	private String interfaceMacAddr ="";
-	
-	private String interfaceEuiAddr = "";
-	
-	private int interfaceSpeed=-1;
-	
-	private int timestampResolution = -1;
-	
-	private int timeBias = -1;
-	
-	private String interfaceFilter = "";
-	
-	private String interfaceOperatingSystem ="";
-	
-	private int interfaceFrameCheckSequenceLength = -1;
-	
-	private int packetOffsetTime = -1;
-	
-	private String comment = "";
-	
-	@Override
-	public String getInterfaceName() {
-		return interfaceName;
-	}
+    private String interfaceName = "";
 
-	@Override
-	public String getInterfaceDescription() {
-		return interfaceDescription;
-	}
+    private String interfaceDescription = "";
 
-	@Override
-	public String getInterfaceIpv4NetworkAddr() {
-		return interfaceIpv4NetworkAddr;
-	}
+    private String interfaceIpv4NetworkAddr = "";
 
-	@Override
-	public String getInterfaceNetmask() {
-		return interfaceNetmask;
-	}
+    private String interfaceNetmask = "";
 
-	@Override
-	public String getIpv6NetworkAddr() {
-		return interfaceIpv6NetworkAddr;
-	}
+    private String interfaceIpv6NetworkAddr = "";
 
-	@Override
-	public String getInterfaceMacAddr() {
-		return interfaceMacAddr;
-	}
+    private String interfaceMacAddr = "";
 
-	@Override
-	public String getInterfaceEuiAddr() {
-		return interfaceEuiAddr;
-	}
+    private String interfaceEuiAddr = "";
 
-	@Override
-	public int getInterfaceSpeed() {
-		return interfaceSpeed;
-	}
+    private int interfaceSpeed = -1;
 
-	@Override
-	public int getTimeStampResolution() {
-		return timestampResolution;
-	}
+    private int timestampResolution = -1;
 
-	@Override
-	public int getTimeBias() {
-		return timeBias;
-	}
+    private int timeBias = -1;
 
-	@Override
-	public String getInterfaceFilter() {
-		return interfaceFilter;
-	}
+    private String interfaceFilter = "";
 
-	@Override
-	public String getInterfaceOperatingSystem() {
-		return interfaceOperatingSystem;
-	}
+    private String interfaceOperatingSystem = "";
 
-	@Override
-	public int getInterfaceFrameCheckSequenceLength() {
-		return interfaceFrameCheckSequenceLength;
-	}
+    private int interfaceFrameCheckSequenceLength = -1;
 
-	@Override
-	public int getTimeStampOffset() {
-		return packetOffsetTime;
-	}
+    private int packetOffsetTime = -1;
 
-	public void setInterfaceName(String interfaceName) {
-		this.interfaceName = interfaceName;
-	}
+    private String comment = "";
 
-	public void setInterfaceDescription(String interfaceDescription) {
-		this.interfaceDescription = interfaceDescription;
-	}
+    @Override
+    public String getInterfaceName() {
+        return interfaceName;
+    }
 
-	public void setInterfaceIpv4NetworkAddr(String interfaceIpv4NetworkAddr) {
-		this.interfaceIpv4NetworkAddr = interfaceIpv4NetworkAddr;
-	}
+    @Override
+    public String getInterfaceDescription() {
+        return interfaceDescription;
+    }
 
-	public void setInterfaceNetmask(String interfaceNetmask) {
-		this.interfaceNetmask = interfaceNetmask;
-	}
+    @Override
+    public String getInterfaceIpv4NetworkAddr() {
+        return interfaceIpv4NetworkAddr;
+    }
 
-	public void setInterfaceIpv6NetworkAddr(String interfaceIpv6NetworkAddr) {
-		this.interfaceIpv6NetworkAddr = interfaceIpv6NetworkAddr;
-	}
+    @Override
+    public String getInterfaceNetmask() {
+        return interfaceNetmask;
+    }
 
-	public void setInterfaceMacAddr(String interfaceMacAddr) {
-		this.interfaceMacAddr = interfaceMacAddr;
-	}
+    @Override
+    public String getIpv6NetworkAddr() {
+        return interfaceIpv6NetworkAddr;
+    }
 
-	public void setInterfaceEuiAddr(String interfaceEuiAddr) {
-		this.interfaceEuiAddr = interfaceEuiAddr;
-	}
+    @Override
+    public String getInterfaceMacAddr() {
+        return interfaceMacAddr;
+    }
 
-	public void setInterfaceSpeed(int interfaceSpeed) {
-		this.interfaceSpeed = interfaceSpeed;
-	}
+    @Override
+    public String getInterfaceEuiAddr() {
+        return interfaceEuiAddr;
+    }
 
-	public void setTimestampResolution(int timestampResolution) {
-		this.timestampResolution = timestampResolution;
-	}
+    @Override
+    public int getInterfaceSpeed() {
+        return interfaceSpeed;
+    }
 
-	public void setTimeBias(int timeBias) {
-		this.timeBias = timeBias;
-	}
+    @Override
+    public int getTimeStampResolution() {
+        return timestampResolution;
+    }
 
-	public void setInterfaceFilter(String interfaceFilter) {
-		this.interfaceFilter = interfaceFilter;
-	}
+    @Override
+    public int getTimeBias() {
+        return timeBias;
+    }
 
-	public void setInterfaceOperatingSystem(String interfaceOperatingSystem) {
-		this.interfaceOperatingSystem = interfaceOperatingSystem;
-	}
+    @Override
+    public String getInterfaceFilter() {
+        return interfaceFilter;
+    }
 
-	public void setInterfaceFrameCheckSequenceLength(
-			int interfaceFrameCheckSequenceLength) {
-		this.interfaceFrameCheckSequenceLength = interfaceFrameCheckSequenceLength;
-	}
+    @Override
+    public String getInterfaceOperatingSystem() {
+        return interfaceOperatingSystem;
+    }
 
-	public void setPacketOffsetTime(int packetOffsetTime) {
-		this.packetOffsetTime = packetOffsetTime;
-	}
+    @Override
+    public int getInterfaceFrameCheckSequenceLength() {
+        return interfaceFrameCheckSequenceLength;
+    }
 
-	public void setComment(String comment)
-	{
-		this.comment=comment;
-	}
-	
-	@Override
-	public String getComment() {
-		return comment;
-	}
+    @Override
+    public int getTimeStampOffset() {
+        return packetOffsetTime;
+    }
+
+    public void setInterfaceName(String interfaceName) {
+        this.interfaceName = interfaceName;
+    }
+
+    public void setInterfaceDescription(String interfaceDescription) {
+        this.interfaceDescription = interfaceDescription;
+    }
+
+    public void setInterfaceIpv4NetworkAddr(String interfaceIpv4NetworkAddr) {
+        this.interfaceIpv4NetworkAddr = interfaceIpv4NetworkAddr;
+    }
+
+    public void setInterfaceNetmask(String interfaceNetmask) {
+        this.interfaceNetmask = interfaceNetmask;
+    }
+
+    public void setInterfaceIpv6NetworkAddr(String interfaceIpv6NetworkAddr) {
+        this.interfaceIpv6NetworkAddr = interfaceIpv6NetworkAddr;
+    }
+
+    public void setInterfaceMacAddr(String interfaceMacAddr) {
+        this.interfaceMacAddr = interfaceMacAddr;
+    }
+
+    public void setInterfaceEuiAddr(String interfaceEuiAddr) {
+        this.interfaceEuiAddr = interfaceEuiAddr;
+    }
+
+    public void setInterfaceSpeed(int interfaceSpeed) {
+        this.interfaceSpeed = interfaceSpeed;
+    }
+
+    public void setTimestampResolution(int timestampResolution) {
+        this.timestampResolution = timestampResolution;
+    }
+
+    public void setTimeBias(int timeBias) {
+        this.timeBias = timeBias;
+    }
+
+    public void setInterfaceFilter(String interfaceFilter) {
+        this.interfaceFilter = interfaceFilter;
+    }
+
+    public void setInterfaceOperatingSystem(String interfaceOperatingSystem) {
+        this.interfaceOperatingSystem = interfaceOperatingSystem;
+    }
+
+    public void setInterfaceFrameCheckSequenceLength(
+            int interfaceFrameCheckSequenceLength) {
+        this.interfaceFrameCheckSequenceLength = interfaceFrameCheckSequenceLength;
+    }
+
+    public void setPacketOffsetTime(int packetOffsetTime) {
+        this.packetOffsetTime = packetOffsetTime;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
 }

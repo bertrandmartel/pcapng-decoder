@@ -10,98 +10,97 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionsEnhancedPacketHead
 
 /**
  * Template used for setting values of Enhanced Packet Section
- * 
- * @author Bertrand Martel
  *
+ * @author Bertrand Martel
  */
 public class OptionEnhancedPacketHeaderObject implements IOptionsEnhancedPacketHeader {
 
-	private String comment = "";
-	
-	private PacketBoundState packetBound =PacketBoundState.UNKNOWN;
-	
-	private PacketReceptionType packetReceptionType = PacketReceptionType.UNKNOWN;
-	
-	private int frameCheckSumLength = -1;
-	
-	private int dropPacketCount = -1;
-	
-	private PacketHashType packetHashType = PacketHashType.UNKNOWN;
-	
-	private byte[] packetHashBigEndian = null;
-	
-	private ArrayList<LinkLayerError> linkLayerErrorList = new ArrayList<LinkLayerError>();
-	
-	@Override
-	public String getComment() {
-		return comment;
-	}
+    private String comment = "";
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	
-	@Override
-	public PacketBoundState getPacketBound() {
-		return packetBound;
-	}
+    private PacketBoundState packetBound = PacketBoundState.UNKNOWN;
 
-	public void setPacketBound(PacketBoundState packetBound) {
-		this.packetBound = packetBound;
-	}
-	
-	@Override
-	public PacketReceptionType getPacketReceptionType() {
-		return packetReceptionType;
-	}
+    private PacketReceptionType packetReceptionType = PacketReceptionType.UNKNOWN;
 
-	public void setPacketReceptionType(PacketReceptionType packetReceptionType) {
-		this.packetReceptionType = packetReceptionType;
-	}
+    private int frameCheckSumLength = -1;
 
-	@Override
-	public int getFrameCheckSumLength() {
-		return frameCheckSumLength;
-	}
+    private int dropPacketCount = -1;
 
-	public void setFrameCheckSumLength(int frameCheckSumLength) {
-		this.frameCheckSumLength = frameCheckSumLength;
-	}
+    private PacketHashType packetHashType = PacketHashType.UNKNOWN;
 
-	@Override
-	public int getDropPacketCount() {
-		return dropPacketCount;
-	}
+    private byte[] packetHashBigEndian = null;
 
-	public void setDropPacketCount(int dropPacketCount) {
-		this.dropPacketCount = dropPacketCount;
-	}
+    private ArrayList<LinkLayerError> linkLayerErrorList = new ArrayList<LinkLayerError>();
 
-	@Override
-	public PacketHashType getPacketHashType() {
-		return packetHashType;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
 
-	public void setPacketHashType(PacketHashType packetHashType) {
-		this.packetHashType = packetHashType;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	@Override
-	public byte[] getPacketHashBigEndian() {
-		return packetHashBigEndian;
-	}
+    @Override
+    public PacketBoundState getPacketBound() {
+        return packetBound;
+    }
 
-	public void setPacketHashBigEndian(byte[] packetHashBigEndian) {
-		this.packetHashBigEndian = packetHashBigEndian;
-	}
+    public void setPacketBound(PacketBoundState packetBound) {
+        this.packetBound = packetBound;
+    }
 
-	@Override
-	public ArrayList<LinkLayerError> getLinkLayerErrorList() {
-		return linkLayerErrorList;
-	}
+    @Override
+    public PacketReceptionType getPacketReceptionType() {
+        return packetReceptionType;
+    }
 
-	public void addLinkLayerError(LinkLayerError error) {
-		this.linkLayerErrorList.add(error);
-	}
+    public void setPacketReceptionType(PacketReceptionType packetReceptionType) {
+        this.packetReceptionType = packetReceptionType;
+    }
+
+    @Override
+    public int getFrameCheckSumLength() {
+        return frameCheckSumLength;
+    }
+
+    public void setFrameCheckSumLength(int frameCheckSumLength) {
+        this.frameCheckSumLength = frameCheckSumLength;
+    }
+
+    @Override
+    public int getDropPacketCount() {
+        return dropPacketCount;
+    }
+
+    public void setDropPacketCount(int dropPacketCount) {
+        this.dropPacketCount = dropPacketCount;
+    }
+
+    @Override
+    public PacketHashType getPacketHashType() {
+        return packetHashType;
+    }
+
+    public void setPacketHashType(PacketHashType packetHashType) {
+        this.packetHashType = packetHashType;
+    }
+
+    @Override
+    public byte[] getPacketHashBigEndian() {
+        return packetHashBigEndian;
+    }
+
+    public void setPacketHashBigEndian(byte[] packetHashBigEndian) {
+        this.packetHashBigEndian = packetHashBigEndian;
+    }
+
+    @Override
+    public ArrayList<LinkLayerError> getLinkLayerErrorList() {
+        return linkLayerErrorList;
+    }
+
+    public void addLinkLayerError(LinkLayerError error) {
+        this.linkLayerErrorList.add(error);
+    }
 
 }

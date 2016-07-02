@@ -6,13 +6,12 @@ import fr.bmartel.pcapdecoder.network.IDnsEntries;
 
 /**
  * Interface template for records of Name resolution section
- * 
- * @author Bertrand Martel
  *
+ * @author Bertrand Martel
  */
-public interface IOptionsRecordNameResolution extends IOptions{
+public interface IOptionsRecordNameResolution extends IOptions {
 
-	public ArrayList<IDnsEntries> getIpv4DnsEntries();
-	
-	public ArrayList<IDnsEntries> getIpv6DnsEntries();
+    public ArrayList<IDnsEntries> getIpv4DnsEntries();
+
+    public ArrayList<IDnsEntries> getIpv6DnsEntries();
 }

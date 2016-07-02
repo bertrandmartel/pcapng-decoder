@@ -4,51 +4,50 @@ import fr.bmartel.pcapdecoder.structure.options.inter.IOptionSectionHeader;
 
 /**
  * Template used for setting values of Section Header
- * 
- * @author Bertrand Martel
  *
+ * @author Bertrand Martel
  */
-public class OptionSectionHeaderObject implements IOptionSectionHeader{
+public class OptionSectionHeaderObject implements IOptionSectionHeader {
 
-	private String hardware = "";
-	private String os ="";
-	private String userAppl="";
-	private String comment = "";
-	
-	@Override
-	public String getHardware() {
-		return hardware;
-	}
+    private String hardware = "";
+    private String os = "";
+    private String userAppl = "";
+    private String comment = "";
 
-	@Override
-	public String getOS() {
-		return os;
-	}
+    @Override
+    public String getHardware() {
+        return hardware;
+    }
 
-	@Override
-	public String getUserAppl() {
-		return userAppl;
-	}
+    @Override
+    public String getOS() {
+        return os;
+    }
 
-	public void setHardware(String hardware) {
-		this.hardware = hardware;
-	}
+    @Override
+    public String getUserAppl() {
+        return userAppl;
+    }
 
-	public void setOs(String os) {
-		this.os = os;
-	}
+    public void setHardware(String hardware) {
+        this.hardware = hardware;
+    }
 
-	public void setUserAppl(String userAppl) {
-		this.userAppl = userAppl;
-	}
+    public void setOs(String os) {
+        this.os = os;
+    }
 
-	@Override
-	public String getComment() {
-		return comment;
-	}
+    public void setUserAppl(String userAppl) {
+        this.userAppl = userAppl;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+    @Override
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
 }
