@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.2](https://github.com/akinaru/pcapng-decoder/tree/1.2) (2016-07-02)
+[Full Changelog](https://github.com/akinaru/pcapng-decoder/compare/1.1...1.2)
+
+## [1.1](https://github.com/akinaru/pcapng-decoder/tree/1.1) (2016-07-02)
+[Full Changelog](https://github.com/akinaru/pcapng-decoder/compare/1.0...1.1)
+
 ## [1.0](https://github.com/akinaru/pcapng-decoder/tree/1.0) (2015-08-10)
 
 

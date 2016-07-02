@@ -8,6 +8,8 @@
 
 Java PCAPNG file parser library
 
+<a href="CHANGELOG.md">show changelog</a>
+
 ## Include in your project
 
 * from gradle 
