@@ -6,12 +6,7 @@
 [![Javadoc](http://javadoc-badge.appspot.com/com.github.akinaru/pcapng-parser.svg?label=javadoc)](http://javadoc-badge.appspot.com/com.github.akinaru/pcapng-parser)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
-decode pcapng file with following sections  :
-* Section Header
-* Interface Description
-* Interface Statistics
-* Enhanced Packet
-* Name Resolution
+Java PCAPNG file parser library
 
 ## Include in your project
 
@@ -37,66 +32,109 @@ https://github.com/akinaru/pcapng-decoder/releases
 | -f <file.pcapng> | input file                                         |
 | -v               | verbose, will show all section parsing content     |
 
-## How to user ?
+Example source code can be found <a href="https://github.com/akinaru/pcapng-decoder/tree/master/examples">here</a>
+
+## How to use ?
+
+### Decode
+
+* decode from n input file :
+```
+PcapDecoder decoder = new PcapDecoder("path/to/file.pcapng");
+decoder.decode();
+```
+
+* decode from a byte array :
+```
+byte[] pcapBa = getPcapBa();
+PcapDecoder decoder = new PcapDecoder(pcapBa);
+decoder.decode();
+```
+
+### Data access
+
+Pcap section list can be accessed via `getSectionList()` :
 
 ```
-byte[] dataFromFile = readFile("test.pcapng");
-
-PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);
-pcapNgDecoder.decode();
+ArrayList<IPcapngType> sectionList = decoder.getSectionList()
 ```
 
-You will access all parsed data from pcapNgDecoder object.
-A complete example is present in ``DisplayAllPacket`` class
+All section type inherit from `IPcapngType`, use reflection to access each type :
 
-getSectionList() : retrieve all sections Object
+```
+for (int i = 0; i < sectionList.size(); i++) {
 
-Access to section type is possible with reflection using instanceof with a set of interface defined in package ``fr.bmartel.pcapdecoder.structure.types.inter`` :
+    if (sectionList.get(i) instanceof ISectionHeaderBlock) {
 
-4 sections are available :
+        ISectionHeaderBlock section = (ISectionHeaderBlock) sectionList.get(i);
 
-* `ISectionHeaderBlock`
-* `IEnhancedPacketBlock`
-* `IStatisticsBLock`
-* `IDescritpionBlock`
-* `INameResolutionBlock`
+        //do what you want with Section Header Block frame type
 
-A ``getSectionList().get(index) instanceof ISectionHeaderBlock`` will permit you to cast the latter interface to get access to the section's characteristics.
+    } else if (sectionList.get(i) instanceof IDescriptionBlock) {
+        
+        IDescriptionBlock section = (IDescriptionBlock) sectionList.get(i);
 
-packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
+        //do what you want with Description Block frame type 
+
+    } else if (sectionList.get(i) instanceof IEnhancedPacketBLock) {
+
+        IEnhancedPacketBLock section = (IEnhancedPacketBLock) sectionList.get(i);
+
+		//do what you want with Enhanced Packet Block frame type 
+
+    } else if (sectionList.get(i) instanceof IStatisticsBlock) {
+
+        IStatisticsBlock section = (IStatisticsBlock) sectionList.get(i);
+
+        //do what you want with Statistics Block frame type 
+
+    } else if (sectionList.get(i) instanceof INameResolutionBlock) {
+
+        INameResolutionBlock section = (INameResolutionBlock) sectionList.get(i);
+
+        //do what you want with Name Resolution Block frame type
+    }
+}
+```
+
+<b>Note</b> : packet data in Enhanced Packet Block is left in packet source endianness
+
+## JavaDoc
+
+http://javadoc-badge.appspot.com/com.github.akinaru/pcapng-parser
 
 ## Example output
 
 ```
-##########################################################<br/>
-SECTION HEADER BLOCK<br/>
-Major version      : 0<br/>
-Minor version      : 1<br/>
-OS                 : Linux 3.8.0-19-generic<br/>
-user application   : Dumpcap 1.10.2 (SVN Rev 51934 from /trunk-1.10)<br/>
-##########################################################<br/>
-SECTION INTERFACE DESCRIPTION BLOCK<br/>
-Link type             : LINKTYPE_IEEE802_11_RADIO<br/>
-Snap len              : 65535<br/>
-interface name        : wlan0<br/>
-timestamp resolution  : 6<br/>
-interface OS name     : Linux 3.8.0-19-generic<br/>
-##########################################################<br/>
-SECTION ENHANCED PACKET BLOCK<br/>
-interface id             : 0<br/>
-timestamp in millis      : Sat Apr 18 12:13:41 CEST 2015<br/>
-captured length          : 185<br/>
-packet length            : 185<br/>
-packet data              : 00 | 00 | 12 | 00 | 2E | 48 | 00 | 00 | 10 | 02 | A3 | 09 | A0 | 00 | C2 | 07 | 00 | 00 | 80 | 00 | 00 | 00 | FF | FF | FF | FF | FF | FF | 00 | 24 | D4 | 6B | 0C | 5D | 00 | 24 | D4 | 6B | 0C | 5D | 00 | E5 | 60 | 01 | 25 | DE | 32 | 03 | 00 | 00 | 60 | 00 | 01 | 04 | 00 | 08 | 46 | 72 | 65 | 65 | 57 | 69 | 66 | 69 | 01 | 08 | 82 | 84 | 8B | 96 | 2C | 0C | 12 | 18 | 03 | 01 | 0C | 05 | 04 | 00 | 02 | 00 | 00 | 2A | 01 | 04 | 32 | 05 | 24 | 30 | 48 | 60 | 6C | 2D | 1A | 6C | 00 | 03 | FF | FF | FF | 00 | 01 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 01 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 3D | 16 | 0C | 00 | 13 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 7F | 08 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 40 | DD | 18 | 00 | 50 | F2 | 02 | 01 | 01 | 00 | 00 | 03 | A4 | 00 | 00 | 27 | A4 | 00 | 00 | 42 | 43 | 5E | 00 | 62 | 32 | 2F | 00 | A3 | 26 | 13 | 07<br/>
-##########################################################<br/>
-SECTION INTERFACE STATISTICS BLOCK<br/>
-interface id             : 0<br/>
-timestamp in millis      : Sat Apr 18 12:16:43 CEST 2015<br/>
-capture start time       : Sat Apr 18 12:13:41 CEST 2015<br/>
-capture end time         : Sat Apr 18 12:16:43 CEST 2015<br/>
-packet received count    : 9493<br/>
-packet drop count        : 0<br/>
-##########################################################<br/>
+##########################################################
+SECTION HEADER BLOCK
+Major version      : 0
+Minor version      : 1
+OS                 : Linux 3.8.0-19-generic
+user application   : Dumpcap 1.10.2 (SVN Rev 51934 from /trunk-1.10)
+##########################################################
+SECTION INTERFACE DESCRIPTION BLOCK
+Link type             : LINKTYPE_IEEE802_11_RADIO
+Snap len              : 65535
+interface name        : wlan0
+timestamp resolution  : 6
+interface OS name     : Linux 3.8.0-19-generic
+##########################################################
+SECTION ENHANCED PACKET BLOCK
+interface id             : 0
+timestamp in millis      : Sat Apr 18 12:13:41 CEST 2015
+captured length          : 185
+packet length            : 185
+packet data              : 00 | 00 | 12 | 00 | 2E | 48 | 00 | 00 | 10 | 02 | A3 | 09 | A0 | 00 | C2 | 07 | 00 | 00 | 80 | 00 | 00 | 00 | FF | FF | FF | FF | FF | FF | 00 | 24 | D4 | 6B | 0C | 5D | 00 | 24 | D4 | 6B | 0C | 5D | 00 | E5 | 60 | 01 | 25 | DE | 32 | 03 | 00 | 00 | 60 | 00 | 01 | 04 | 00 | 08 | 46 | 72 | 65 | 65 | 57 | 69 | 66 | 69 | 01 | 08 | 82 | 84 | 8B | 96 | 2C | 0C | 12 | 18 | 03 | 01 | 0C | 05 | 04 | 00 | 02 | 00 | 00 | 2A | 01 | 04 | 32 | 05 | 24 | 30 | 48 | 60 | 6C | 2D | 1A | 6C | 00 | 03 | FF | FF | FF | 00 | 01 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 01 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 3D | 16 | 0C | 00 | 13 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 7F | 08 | 00 | 00 | 00 | 00 | 00 | 00 | 00 | 40 | DD | 18 | 00 | 50 | F2 | 02 | 01 | 01 | 00 | 00 | 03 | A4 | 00 | 00 | 27 | A4 | 00 | 00 | 42 | 43 | 5E | 00 | 62 | 32 | 2F | 00 | A3 | 26 | 13 | 07
+##########################################################
+SECTION INTERFACE STATISTICS BLOCK
+interface id             : 0
+timestamp in millis      : Sat Apr 18 12:16:43 CEST 2015
+capture start time       : Sat Apr 18 12:13:41 CEST 2015
+capture end time         : Sat Apr 18 12:16:43 CEST 2015
+packet received count    : 9493
+packet drop count        : 0
+##########################################################
 ```
 
 ## Compatibility
