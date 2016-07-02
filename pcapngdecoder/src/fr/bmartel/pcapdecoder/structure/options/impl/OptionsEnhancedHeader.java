@@ -90,7 +90,9 @@ public class OptionsEnhancedHeader extends OptionsAbstr {
                                 .convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
                     else
                         commonObject.setDropPacketCount((UtilFunctions.convertByteArrayToInt(Arrays.copyOfRange(data,
-								0, 8))));
+                                0, 8))));
+                    break;
+                default:
                     break;
             }
         } catch (UnsupportedEncodingException e) {
@@ -106,11 +108,11 @@ public class OptionsEnhancedHeader extends OptionsAbstr {
     private void parseLinkLayerInfo(byte[] data) {
         //BIT 0  to 1   INBOUND/OUTBOUND      => 00 = information not available, 01 = inbound, 10 = outbound
         //BIT 2  to 4   RECEPTION TYPE        => 000 = not specified, 001 = unicast, 010 = multicast, 011 =
-		// broadcast, 100 = promiscuous
+        // broadcast, 100 = promiscuous
         //BIT 5  to 8   FCS length, in bytes  => (0000 if this information is not available)
         //BIT 16 to 31	link-layer-dependent errors (Bit 31 = symbol error, Bit 30 = preamble error, Bit 29 = Start
-		// Frame Delimiter error, Bit 28 = unaligned frame error, Bit 27 = wrong Inter Frame Gap error, Bit 26 =
-		// packet too short error, Bit 25 = packet too long error, Bit 24 = CRC error
+        // Frame Delimiter error, Bit 28 = unaligned frame error, Bit 27 = wrong Inter Frame Gap error, Bit 26 =
+        // packet too short error, Bit 25 = packet too long error, Bit 24 = CRC error
         byte bound = (byte) (data[data.length - 1] & 0b00000011);
 
         if (bound == 1)

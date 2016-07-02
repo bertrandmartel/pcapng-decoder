@@ -45,51 +45,54 @@ public class OptionsInterfaceStatisticsHeader extends OptionsAbstr {
                 case 3:
                     if (!isBigEndian) {
                         commonObject.setCaptureEndTime(parseTimeStamp(UtilFunctions.convertLeToBe(Arrays.copyOfRange
-								(data, 0, 8))));
+                                (data, 0, 8))));
                     } else {
                         commonObject.setCaptureEndTime(parseTimeStamp(Arrays.copyOfRange(data, 0, 8)));
                     }
                     break;
                 case 4:
                     // this appear to be in Big endian even in Little Endian ! or something is missing in doc
-					/*
+                    /*
 					if (!isBigEndian)
 						this.commonObject.setPacketReceivedCount(ConvertFunctions.convertByteArrayToLong
 						(ConvertFunctions.convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
 					else*/
                     this.commonObject.setPacketReceivedCount(UtilFunctions.convertByteArrayToLong(Arrays.copyOfRange
-							(data, 0, 8)));
+                            (data, 0, 8)));
                     break;
                 case 5:
                     if (!isBigEndian)
                         this.commonObject.setPacketDropCount(UtilFunctions.convertByteArrayToLong(UtilFunctions
-								.convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
+                                .convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
                     else
                         this.commonObject.setPacketDropCount(UtilFunctions.convertByteArrayToLong(Arrays.copyOfRange
-								(data, 0, 8)));
+                                (data, 0, 8)));
                     break;
                 case 6:
                     if (!isBigEndian)
                         this.commonObject.setPacketAcceptedByFilterCount(UtilFunctions.convertByteArrayToLong
-								(UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
+                                (UtilFunctions.convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
                     else
                         this.commonObject.setPacketAcceptedByFilterCount(UtilFunctions.convertByteArrayToLong(Arrays
-								.copyOfRange(data, 0, 8)));
+                                .copyOfRange(data, 0, 8)));
                     break;
                 case 7:
                     if (!isBigEndian)
                         this.commonObject.setPacketDroppedByOS(UtilFunctions.convertByteArrayToLong(UtilFunctions
-								.convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
+                                .convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
                     else
                         this.commonObject.setPacketDroppedByOS(UtilFunctions.convertByteArrayToLong(Arrays
-								.copyOfRange(data, 0, 8)));
+                                .copyOfRange(data, 0, 8)));
                     break;
                 case 8:
                     if (!isBigEndian)
                         this.commonObject.setPacketDeliveredToUser(UtilFunctions.convertByteArrayToLong(UtilFunctions
-								.convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
+                                .convertLeToBe(Arrays.copyOfRange(data, 0, 8))));
                     else
-                        this.commonObject.setPacketDeliveredToUser(UtilFunctions.convertByteArrayToLong(Arrays.copyOfRange(data, 0, 8)));
+                        this.commonObject.setPacketDeliveredToUser(UtilFunctions.convertByteArrayToLong(Arrays
+                                .copyOfRange(data, 0, 8)));
+                    break;
+                default:
                     break;
             }
         } catch (UnsupportedEncodingException e) {

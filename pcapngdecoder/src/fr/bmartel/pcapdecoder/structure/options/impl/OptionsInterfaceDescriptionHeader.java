@@ -74,7 +74,7 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr {
                         interfaceIpv6Addr = Arrays.copyOfRange(data, 0, 17);
 
                     this.commonObject.setInterfaceIpv6NetworkAddr(NetworkUtils.formatIpv6AddrWithPort
-							(interfaceIpv6Addr));
+                            (interfaceIpv6Addr));
 
                     break;
                 case 6:
@@ -130,7 +130,8 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr {
                     break;
                 case 12:
                     if (!isBigEndian)
-                        this.commonObject.setInterfaceOperatingSystem(new String(UtilFunctions.convertLeToBe(data), "UTF-8"));
+                        this.commonObject.setInterfaceOperatingSystem(new String(UtilFunctions.convertLeToBe(data),
+                                "UTF-8"));
                     else
                         this.commonObject.setInterfaceOperatingSystem(new String(data, "UTF-8"));
                     break;
@@ -145,6 +146,8 @@ public class OptionsInterfaceDescriptionHeader extends OptionsAbstr {
                         offsetTime = Arrays.copyOfRange(data, 0, 8);
 
                     this.commonObject.setPacketOffsetTime(UtilFunctions.convertByteArrayToInt(offsetTime));
+                    break;
+                default:
                     break;
             }
         } catch (UnsupportedEncodingException e) {
