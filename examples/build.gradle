@@ -31,8 +31,10 @@ task findConventions << {
 }
 
 task run(type: JavaExec) {
+    if ( project.hasProperty("appArgs") ) {
+        args Eval.me(appArgs)
+    }
     classpath = sourceSets.main.runtimeClasspath
     classpath += sourceSets.main.resources
     main = "fr.bmartel.pcapngdecoder.main.MainParser"
-    args ""
 }
