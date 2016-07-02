@@ -13,22 +13,31 @@ decode pcapng file with following sections  :
 * Enhanced Packet
 * Name Resolution
 
-Further section type will be added in the future.
+## Include in your project
 
-<hr/>
+* from gradle 
 
-COMMAND LINE SYNTAX : 
+```
+compile 'com.github.akinaru:pcapng-parser:1.2'
+```
 
-``java -jar pcapngdecoder-1.0.jar -f ../pcapfile/exemple.pcapng -v``
+* from release archive
 
--f <file.pcapng> : input file
+https://github.com/akinaru/pcapng-decoder/releases
 
--v               : verbose, will show all section parsing content
+## Run example
 
-Example laucnhed from release folder
-<hr/>
+```
+./gradlew run -PappArgs="['-f', 'path_to_file/pcapfile/exemple.pcapng'  , '-v' ]"
 
-PROGRAM SYNTAX :
+```
+
+|  args            | description                                        |
+|------------------|----------------------------------------------------|
+| -f <file.pcapng> | input file                                         |
+| -v               | verbose, will show all section parsing content     |
+
+## How to user ?
 
 ```
 byte[] dataFromFile = readFile("test.pcapng");
@@ -37,32 +46,28 @@ PcapDecoder pcapNgDecoder = new PcapDecoder(dataFromFile);
 pcapNgDecoder.decode();
 ```
 
-dont forget the import :
-``import fr.bmartel.pcapdecoder.PcapDecoder;``
-
 You will access all parsed data from pcapNgDecoder object.
-A complete example is present in ``fr.bmartel.pcapdecoder.main.DisplayAllPacket`` class
+A complete example is present in ``DisplayAllPacket`` class
 
 getSectionList() : retrieve all sections Object
 
 Access to section type is possible with reflection using instanceof with a set of interface defined in package ``fr.bmartel.pcapdecoder.structure.types.inter`` :
 
-For now only 4 are parsed successfully :
+4 sections are available :
 
-* ISectionHeaderBlock
-* IEnhancedPacketBlock
-* IStatisticsBLock
-* IDescritpionBlock
-* INameResolutionBlock
+* `ISectionHeaderBlock`
+* `IEnhancedPacketBlock`
+* `IStatisticsBLock`
+* `IDescritpionBlock`
+* `INameResolutionBlock`
 
 A ``getSectionList().get(index) instanceof ISectionHeaderBlock`` will permit you to cast the latter interface to get access to the section's characteristics.
 
 packet data in Enhanced Packet Block is left in packet source endianness (make it easier to compare with Wireshark result)
 
-<hr/>
+## Example output
 
-<b>Output Example</b>
-
+```
 ##########################################################<br/>
 SECTION HEADER BLOCK<br/>
 Major version      : 0<br/>
@@ -92,10 +97,20 @@ capture end time         : Sat Apr 18 12:16:43 CEST 2015<br/>
 packet received count    : 9493<br/>
 packet drop count        : 0<br/>
 ##########################################################<br/>
+```
 
-<hr/>
+## Compatibility
 
-* Project is JRE 1.7 compliant
-* You can build it with ant => build.xml
-* Development on Eclipse 
-* Specification from https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html
+JRE 1.7 compliant
+
+## Build
+
+Gradle using IntelliJ IDEA or Eclipse
+
+## Specifications 
+
+https://www.winpcap.org/ntar/draft/PCAP-DumpFileFormat.html
+
+## License
+
+The MIT License (MIT) Copyright (c) 2015-2016 Bertrand Martel
