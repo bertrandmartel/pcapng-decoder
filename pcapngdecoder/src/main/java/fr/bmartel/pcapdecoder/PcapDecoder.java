@@ -23,6 +23,10 @@
  */
 package fr.bmartel.pcapdecoder;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -53,12 +57,27 @@ public class PcapDecoder {
     private ArrayList<IPcapngType> pcapSectionList = new ArrayList<IPcapngType>();
 
     /**
-     * instantiate Pcap Decoder with a new data to parse (from Pcap Ng file)
+     * build Pcap Decoder with a new data to parse (from Pcap Ng file)
      *
      * @param data
      */
     public PcapDecoder(byte[] data) {
         this.data = data;
+    }
+
+    /**
+     * Build Pcap Decoder from an absolute file path
+     *
+     * @param inputFilePath absolute file path
+     */
+    public PcapDecoder(String inputFilePath) {
+        if (inputFilePath != null) {
+            try {
+                this.data = Files.readAllBytes(Paths.get(inputFilePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -125,8 +144,6 @@ public class PcapDecoder {
 
     /**
      * Decode a specific section type from HeaderBLocks class
-     *
-     * @param sectionType
      */
     public int processSectionType(BlockTypes type, int initIndex) throws DecodeException {
 
@@ -157,8 +174,6 @@ public class PcapDecoder {
 
     /**
      * Decode
-     *
-     * @param data
      */
     public byte decode() {
         if (data == null || data.length < 4) {
