@@ -1,4 +1,4 @@
-# PCAPNG File Parser in Java #
+# PCAPNG File Parser #
 
 [![Build Status](https://travis-ci.org/akinaru/pcapng-decoder.svg?branch=master)](https://travis-ci.org/akinaru/pcapng-decoder)
 [ ![Download](https://api.bintray.com/packages/akinaru/maven/pcapng-parser/images/download.svg) ](https://bintray.com/akinaru/maven/pcapng-parser/_latestVersion)
