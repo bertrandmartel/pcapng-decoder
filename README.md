@@ -1,11 +1,11 @@
 # PCAPNG Decoder Library #
 
-http://akinaru.github.io/pcapng-decoder/
+http://bertrandmartel.github.io/pcapng-decoder/
 
-[![Build Status](https://travis-ci.org/akinaru/pcapng-decoder.svg?branch=master)](https://travis-ci.org/akinaru/pcapng-decoder)
-[ ![Download](https://api.bintray.com/packages/akinaru/maven/pcapng-parser/images/download.svg) ](https://bintray.com/akinaru/maven/pcapng-parser/_latestVersion)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1188df87489749a48978a5d953662d18)](https://www.codacy.com/app/bmartel.fr/pcapng-decoder?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=akinaru/pcapng-decoder&amp;utm_campaign=Badge_Grade)
-[![Javadoc](http://javadoc-badge.appspot.com/com.github.akinaru/pcapngdecoder.svg?label=javadoc)](http://javadoc-badge.appspot.com/com.github.akinaru/pcapngdecoder)
+[![Build Status](https://travis-ci.org/bertrandmartel/pcapng-decoder.svg?branch=master)](https://travis-ci.org/bertrandmartel/pcapng-decoder)
+[ ![Download](https://api.bintray.com/packages/bertrandmartel/maven/pcapng-parser/images/download.svg) ](https://bintray.com/bertrandmartel/maven/pcapng-parser/_latestVersion)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1188df87489749a48978a5d953662d18)](https://www.codacy.com/app/bertrandmartel/pcapng-decoder?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bertrandmartel/pcapng-decoder&amp;utm_campaign=Badge_Grade)
+[![Javadoc](http://javadoc-badge.appspot.com/fr.bmartel/pcapngdecoder.svg?label=javadoc)](http://javadoc-badge.appspot.com/fr.bmartel/pcapngdecoder)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
 Java PCAPNG file parser library
@@ -17,12 +17,12 @@ Java PCAPNG file parser library
 * from gradle 
 
 ```
-compile 'com.github.akinaru:pcapngdecoder:1.2'
+compile 'fr.bmartel:pcapngdecoder:1.2'
 ```
 
 * from release archive
 
-https://github.com/akinaru/pcapng-decoder/releases
+https://github.com/bertrandmartel/pcapng-decoder/releases
 
 ## Run example
 
@@ -35,7 +35,7 @@ https://github.com/akinaru/pcapng-decoder/releases
 | -f <file.pcapng> | input file                                         |
 | -v               | verbose, will show all section parsing content     |
 
-Example source code can be found <a href="https://github.com/akinaru/pcapng-decoder/tree/master/examples">here</a>
+Example source code can be found <a href="https://github.com/bertrandmartel/pcapng-decoder/tree/master/examples">here</a>
 
 ## How to use ?
 
@@ -104,7 +104,7 @@ for (int i = 0; i < sectionList.size(); i++) {
 
 ## JavaDoc
 
-http://javadoc-badge.appspot.com/com.github.akinaru/pcapngdecoder
+http://javadoc-badge.appspot.com/fr.bmartel/pcapngdecoder
 
 ## Example output
 

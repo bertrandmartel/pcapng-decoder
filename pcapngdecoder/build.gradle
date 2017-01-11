@@ -1,7 +1,7 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-group 'com.github.akinaru'
+group 'fr.bmartel'
 version '1.2'
 
 apply plugin: 'java'
@@ -16,8 +16,8 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-def siteUrl = 'https://github.com/akinaru/pcapng-decoder'
-def gitUrl = 'https://github.com/akinaru/pcapng-decoder.git'
+def siteUrl = 'https://github.com/bertrandmartel/pcapng-decoder'
+def gitUrl = 'https://github.com/bertrandmartel/pcapng-decoder.git'
 
 bintray {
     user = "$System.env.BINTRAY_USER"
@@ -33,7 +33,7 @@ bintray {
         name = 'pcapng-parser'
         desc = 'pcapng file parser'
         websiteUrl = siteUrl
-        issueTrackerUrl = 'https://github.com/akinaru/pcapng-decoder/issues'
+        issueTrackerUrl = 'https://github.com/bertrandmartel/pcapng-decoder/issues'
         vcsUrl = gitUrl
         licenses = ['MIT']
         labels = ['pcapng']
@@ -71,19 +71,19 @@ install {
                 licenses {
                     license {
                         name 'The MIT License'
-                        url 'https://github.com/akinaru/pcapng-decoder/blob/master/LICENSE.md'
+                        url 'https://github.com/bertrandmartel/pcapng-decoder/blob/master/LICENSE.md'
                     }
                 }
                 developers {
                     developer {
-                        id 'akinaru'
+                        id 'bertrandmartel'
                         name 'Bertrand Martel'
                         email 'bmartel.fr@gmail.com'
                     }
                 }
                 scm {
-                    connection 'https://github.com/akinaru/pcapng-decoder.git'
-                    developerConnection 'https://github.com/akinaru/pcapng-decoder.git'
+                    connection 'https://github.com/bertrandmartel/pcapng-decoder.git'
+                    developerConnection 'https://github.com/bertrandmartel/pcapng-decoder.git'
                     url siteUrl
                 }
             }
