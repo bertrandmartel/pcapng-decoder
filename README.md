@@ -5,6 +5,7 @@ http://bertrandmartel.github.io/pcapng-decoder/
 [![Build Status](https://travis-ci.org/bertrandmartel/pcapng-decoder.svg?branch=master)](https://travis-ci.org/bertrandmartel/pcapng-decoder)
 [ ![Download](https://api.bintray.com/packages/bertrandmartel/maven/pcapng-parser/images/download.svg) ](https://bintray.com/bertrandmartel/maven/pcapng-parser/_latestVersion)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1188df87489749a48978a5d953662d18)](https://www.codacy.com/app/bertrandmartel/pcapng-decoder?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bertrandmartel/pcapng-decoder&amp;utm_campaign=Badge_Grade)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/pcapngdecoder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.bmartel/pcapngdecoder)
 [![Javadoc](http://javadoc-badge.appspot.com/fr.bmartel/pcapngdecoder.svg?label=javadoc)](http://javadoc-badge.appspot.com/fr.bmartel/pcapngdecoder)
 [![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE.md)
 
