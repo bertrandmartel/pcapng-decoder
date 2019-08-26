@@ -23,10 +23,10 @@
  */
 package fr.bmartel.pcapdecoder;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -35,10 +35,9 @@ import fr.bmartel.pcapdecoder.constant.MagicNumber;
 import fr.bmartel.pcapdecoder.structure.BlockTypes;
 import fr.bmartel.pcapdecoder.structure.PcapNgStructureParser;
 import fr.bmartel.pcapdecoder.structure.types.IPcapngType;
-import fr.bmartel.pcapdecoder.utils.UtilFunctions;
-import fr.bmartel.pcapdecoder.utils.DecodeException;
 import fr.bmartel.pcapdecoder.utils.DecoderStatus;
 import fr.bmartel.pcapdecoder.utils.Endianess;
+import fr.bmartel.pcapdecoder.utils.UtilFunctions;
 
 /**
  * PCAP NG decoder
@@ -47,166 +46,175 @@ import fr.bmartel.pcapdecoder.utils.Endianess;
  */
 public class PcapDecoder {
 
-    /**
-     * data to parse
-     */
-    private byte[] data = null;
+	/**
+	 * data to parse
+	 */
+	private InputStream data = null;
 
-    private boolean isBigEndian = true;
+	private boolean isBigEndian = true;
 
-    private ArrayList<IPcapngType> pcapSectionList = new ArrayList<IPcapngType>();
+	private ArrayList<IPcapngType> pcapSectionList = new ArrayList<IPcapngType>();
 
-    /**
-     * build Pcap Decoder with a new data to parse (from Pcap Ng file)
-     *
-     * @param data
-     */
-    public PcapDecoder(byte[] data) {
-        this.data = data;
-    }
+	/**
+	 * build Pcap Decoder with a new data to parse (from Pcap Ng file)
+	 *
+	 * @param data
+	 */
+	public PcapDecoder(InputStream data) {
+		this.data = data;
+	}
 
-    /**
-     * Build Pcap Decoder from an absolute file path
-     *
-     * @param inputFilePath absolute file path
-     */
-    public PcapDecoder(String inputFilePath) {
-        if (inputFilePath != null) {
-            try {
-                this.data = Files.readAllBytes(Paths.get(inputFilePath));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+	/**
+	 * build Pcap Decoder with a new data to parse (from Pcap Ng file)
+	 *
+	 * @param data
+	 */
+	public PcapDecoder(byte[] data) {
+		this.data = new ByteArrayInputStream(data);
+	}
 
-    /**
-     * Detect endianess with magic number in section header block : will be  0x1A2B3C4D in big endian and  0x4D3C2B1A
-     * for little endian
-     *
-     * @param magicNumber
-     * @return
-     */
-    private byte detectEndianness(byte[] magicNumber) {
-        if (UtilFunctions.compare32Bytes(MagicNumber.MAGIC_NUMBER_BIG_ENDIAN, magicNumber, isBigEndian)) {
-            return Endianess.BIG_ENDIAN;
-        } else if (UtilFunctions.compare32Bytes(MagicNumber.MAGIC_NUMBER_LITTLE_ENDIAN, magicNumber, isBigEndian)) {
-            return Endianess.LITTLE_ENDIAN;
-        } else {
-            return Endianess.NO_ENDIANESS;
-        }
-    }
+	/**
+	 * Build Pcap Decoder from an absolute file path
+	 *
+	 * @param inputFilePath absolute file path
+	 */
+	public PcapDecoder(String inputFilePath) {
+		if (inputFilePath != null) {
+			try {
+				this.data = new FileInputStream(inputFilePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    private int parseBlockLength(byte[] length, boolean isBigEndian) {
-        if (isBigEndian) {
-            int blockLength = (((data[0] << 32) & 0xFF) + ((data[1] << 16) & 0xFF) + ((data[2] << 8) & 0xFF) + (
-                    (data[3] << 0) & 0xFF));
-            return blockLength;
-        } else {
-            int blockLength = (((length[0] << 0) & 0xFF) + ((length[1] << 8) & 0xFF00) + ((length[2] << 16) &
-                    0xFF0000) + ((length[3] << 32) & 0xFF000000));
-            return blockLength;
-        }
-    }
+	/**
+	 * Detect endianess with magic number in section header block : will be
+	 * 0x1A2B3C4D in big endian and 0x4D3C2B1A for little endian
+	 *
+	 * @param magicNumber
+	 * @return
+	 */
+	private byte detectEndianness(byte[] magicNumber) {
+		if (UtilFunctions.compare32Bytes(MagicNumber.MAGIC_NUMBER_BIG_ENDIAN, magicNumber, isBigEndian)) {
+			return Endianess.BIG_ENDIAN;
+		} else if (UtilFunctions.compare32Bytes(MagicNumber.MAGIC_NUMBER_LITTLE_ENDIAN, magicNumber, isBigEndian)) {
+			return Endianess.LITTLE_ENDIAN;
+		} else {
+			return Endianess.NO_ENDIANESS;
+		}
+	}
 
-    /**
-     * Parse data block of all type of section and return current index to be read next
-     *
-     * @param data
-     * @return
-     */
-    private int parseDataBlock(BlockTypes type, byte[] data, int initIndex) {
-        try {
+	private int parseBlockLength(byte[] length, boolean isBigEndian) {
+		if (isBigEndian) {
+			int blockLength = (((length[0] << 32) & 0xFF) + ((length[1] << 16) & 0xFF) + ((length[2] << 8) & 0xFF)
+					+ ((length[3] << 0) & 0xFF));
+			return blockLength;
+		} else {
+			int blockLength = (((length[0] << 0) & 0xFF) + ((length[1] << 8) & 0xFF00) + ((length[2] << 16) & 0xFF0000)
+					+ ((length[3] << 32) & 0xFF000000));
+			return blockLength;
+		}
+	}
 
-            int index = initIndex;
+	/**
+	 * Parse data block of all type of section and return current index to be read
+	 * next
+	 *
+	 * @param data
+	 * @return DecoderStatus
+	 */
+	private void parseDataBlock(BlockTypes type) throws IOException {
+		if (data.available() < 4) {
+			throw new IOException("Inputstream needs at least 4 bytes!");
+		}
 
-            int blockLength = parseBlockLength(Arrays.copyOfRange(data, index + 4, index + 8), isBigEndian);
+		// first four bytes for the blocktype are already read
+		byte[] blockLengthBytes = new byte[4];
+		data.read(blockLengthBytes);
+		int blockLength = parseBlockLength(blockLengthBytes, isBigEndian);
 
-            // substract 4 for header and 4 for size (x2 at the end)
-            byte[] dataBlock = Arrays.copyOfRange(data, index + 8, index + (blockLength - 4));
+		if (data.available() < blockLength - 8) {
+			throw new IOException("Inputstream needs at least " + (blockLength - 8) + " bytes!");
+		}
 
-            byte[] dataTemp = dataBlock;
+		byte[] dataBlock = new byte[blockLength - 8];
+		data.read(dataBlock);
+		if (type == BlockTypes.SECTION_HEADER_BLOCK) {
+			byte[] endianessBytes = Arrays.copyOfRange(dataBlock, 0, 4);
+			byte endianess = detectEndianness(endianessBytes);
+			if (endianess == Endianess.BIG_ENDIAN) {
+				isBigEndian = true;
+			} else if (endianess == Endianess.LITTLE_ENDIAN) {
+				isBigEndian = false;
+			}
+			dataBlock = Arrays.copyOfRange(dataBlock, 4, dataBlock.length);
+		}
+		PcapNgStructureParser structure = new PcapNgStructureParser(type, dataBlock, isBigEndian);
+		structure.decode();
+		pcapSectionList.add(structure.getPcapStruct());
+	}
 
-            if (type == BlockTypes.SECTION_HEADER_BLOCK) {
-                dataTemp = Arrays.copyOfRange(dataBlock, 4, dataBlock.length);
-            }
-            PcapNgStructureParser structure = new PcapNgStructureParser(type, dataTemp, isBigEndian);
-            structure.decode();
-            pcapSectionList.add(structure.getPcapStruct());
+	/**
+	 * Decode a specific section type from HeaderBLocks class
+	 */
+	public void processSectionType(BlockTypes type, byte[] headerBytes) throws IOException {
+		if (UtilFunctions.compare32Bytes(HeaderBlocks.SECTION_TYPE_LIST.get(type.toString()), headerBytes,
+				isBigEndian)) {
+			parseDataBlock(type);
+		}
+	}
+	
+	/**
+	 * Decode a single block
+	 */
+	public byte decodeNextBlock() {
+		if (data == null) {
+			return DecoderStatus.FAILED_STATUS;
+		}
+		
+		try {
+			if (data.available() < 4) {
+				throw new IOException("Inputstream needs at least 4 bytes!");
+			}
 
-            index += (blockLength - 1) + 1;
-            return index;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return DecoderStatus.FAILED_STATUS;
-        }
-    }
+			byte[] headerBytes = new byte[4];
+			data.read(headerBytes);
+			
+			for(BlockTypes type : BlockTypes.values()) {
+				if (UtilFunctions.compare32Bytes(HeaderBlocks.SECTION_TYPE_LIST.get(type.toString()), headerBytes,
+						isBigEndian)) {
+					parseDataBlock(type);
+					return DecoderStatus.SUCCESS_STATUS;
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return DecoderStatus.FAILED_STATUS;
+		}
+		return DecoderStatus.FAILED_STATUS;
+	}
 
-    /**
-     * Decode a specific section type from HeaderBLocks class
-     */
-    public int processSectionType(BlockTypes type, int initIndex) throws DecodeException {
+	/**
+	 * Decode
+	 */
+	public byte decode() {
+		if (data == null) {
+			return DecoderStatus.FAILED_STATUS;
+		}
 
-        int index = initIndex;
+		try {
+			while (data.available() > 0) {
+				decodeNextBlock();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return DecoderStatus.FAILED_STATUS;
+		}
+		return DecoderStatus.SUCCESS_STATUS;
+	}
 
-        if (UtilFunctions.compare32Bytes(HeaderBlocks.SECTION_TYPE_LIST.get(type.toString()), Arrays.copyOfRange
-                (data, index, index + 4), isBigEndian)) {
-            if (type == BlockTypes.SECTION_HEADER_BLOCK) {
-                byte endianess = detectEndianness(Arrays.copyOfRange(Arrays.copyOfRange(data, index + 8,
-                        index + 12), 0, 4));
-
-                if (endianess == Endianess.BIG_ENDIAN) {
-                    isBigEndian = true;
-                } else if (endianess == Endianess.LITTLE_ENDIAN) {
-                    isBigEndian = false;
-                }
-            }
-
-            index = parseDataBlock(type, data, index);
-
-            if (index == -1) {
-                throw new DecodeException();
-            }
-            return index;
-        }
-        return index;
-    }
-
-    /**
-     * Decode
-     */
-    public byte decode() {
-        if (data == null || data.length < 4) {
-            return DecoderStatus.FAILED_STATUS;
-        }
-
-        int initIndex = 0;
-
-        try {
-            int formerIndex = 0;
-
-            while (initIndex != data.length) {
-                initIndex = processSectionType(BlockTypes.SECTION_HEADER_BLOCK, initIndex);
-                initIndex = processSectionType(BlockTypes.INTERFACE_DESCRIPTION_BLOCK, initIndex);
-                initIndex = processSectionType(BlockTypes.ENHANCES_PACKET_BLOCK, initIndex);
-                initIndex = processSectionType(BlockTypes.SIMPLE_PACKET_BLOCK, initIndex);
-                initIndex = processSectionType(BlockTypes.NAME_RESOLUTION_BLOCK, initIndex);
-                initIndex = processSectionType(BlockTypes.INTERFACE_STATISTICS_BLOCK, initIndex);
-                initIndex = processSectionType(BlockTypes.PACKET_BLOCK, initIndex);
-
-                if (formerIndex == initIndex && formerIndex != 0) {
-                    throw new DecodeException("File parsing error | format not recognized");
-                }
-                formerIndex = initIndex;
-            }
-        } catch (DecodeException e) {
-            e.printStackTrace();
-            return DecoderStatus.FAILED_STATUS;
-        }
-        return DecoderStatus.SUCCESS_STATUS;
-    }
-
-    public ArrayList<IPcapngType> getSectionList() {
-        return pcapSectionList;
-    }
+	public ArrayList<IPcapngType> getSectionList() {
+		return pcapSectionList;
+	}
 }
